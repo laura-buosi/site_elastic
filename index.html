@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>ELAS-&lt;TIC&gt; 2026 | Início</title>
+<link rel="stylesheet" href="shared.css">
+<style>
+/* ===== HOME SPECIFIC ===== */
+ 
+/* HERO */
+.hero {
+  min-height:100vh;
+  background:var(--grad-main);
+  display:flex; flex-direction:column;
+  align-items:center; justify-content:center;
+  padding:120px 6vw 80px;
+  position:relative; overflow:hidden; text-align:center;
+}
+.hero-dots {
+  position:absolute; inset:0;
+  background-image:radial-gradient(rgba(255,255,255,0.1) 1px, transparent 1px);
+  background-size:28px 28px; pointer-events:none;
+}
+.hero-glow {
+  position:absolute; width:600px; height:600px; border-radius:50%;
+  background:radial-gradient(circle, rgba(255,110,199,0.22) 0%, transparent 70%);
+  top:50%; left:50%; transform:translate(-50%,-50%); pointer-events:none;
+}
+.hero-badge {
+  display:inline-block; background:rgba(255,255,255,0.13);
+  border:1px solid rgba(255,255,255,0.28); color:#fff;
+  padding:0.4rem 1.2rem; border-radius:50px;
+  font-size:0.8rem; font-weight:600; letter-spacing:0.05em;
+  margin-bottom:1.5rem; position:relative;
+}
+.hero-badge::before { content:'✦'; margin-right:0.5rem; color:var(--amarelo); }
+.hero h1 {
+  font-family:'Syne',sans-serif; font-size:clamp(3.8rem,11vw,9rem);
+  font-weight:800; color:#fff; line-height:0.88;
+  letter-spacing:-3px; margin-bottom:0.4rem; position:relative;
+}
+.hero h1 .tag { color:var(--rosa-claro); }
+.hero-year {
+  font-family:'Syne',sans-serif; font-size:clamp(1.1rem,2.5vw,1.8rem);
+  color:var(--amarelo); font-weight:700; letter-spacing:6px;
+  margin-bottom:1.8rem;
+}
+.hero-sub {
+  font-size:clamp(1rem,1.8vw,1.15rem);
+  color:rgba(255,255,255,0.85);
+  max-width:520px; line-height:1.7;
+  margin:0 auto 2.5rem;
+}
+.hero-btns { display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; }
+.hero-stats {
+  display:flex; gap:2.5rem; justify-content:center;
+  margin-top:3.5rem; flex-wrap:wrap;
+}
+.stat-num {
+  font-family:'Syne',sans-serif; font-size:2rem; font-weight:800;
+  color:var(--amarelo); line-height:1;
+}
+.stat-label { font-size:0.78rem; color:rgba(255,255,255,0.65); margin-top:0.3rem; }
+.scroll-hint {
+  position:absolute; bottom:2rem; left:50%; transform:translateX(-50%);
+  display:flex; flex-direction:column; align-items:center; gap:0.4rem;
+  color:rgba(255,255,255,0.4); font-size:0.72rem;
+  animation:bounceY 2s ease-in-out infinite;
+}
+@keyframes bounceY { 0%,100%{transform:translateX(-50%) translateY(0)} 50%{transform:translateX(-50%) translateY(9px)} }
+.scroll-arrow { width:18px; height:18px; border-right:2px solid currentColor; border-bottom:2px solid currentColor; transform:rotate(45deg); }
+ 
+/* SOBRE */
+.sobre-grid { display:grid; grid-template-columns:1fr 1fr; gap:4rem; align-items:center; }
+.sobre-visual {
+  background:var(--grad-main); border-radius:24px;
+  aspect-ratio:1; display:flex; align-items:center; justify-content:center;
+  position:relative; overflow:hidden;
+}
+.sobre-visual-text {
+  font-family:'Syne',sans-serif; font-size:2.6rem; font-weight:800;
+  color:#fff; text-align:center; line-height:1.1; position:relative; z-index:1;
+}
+.sobre-visual::before {
+  content:''; position:absolute; width:350px; height:350px; border-radius:50%;
+  background:rgba(255,110,199,0.2); top:-60px; right:-60px;
+}
+.pills { display:flex; flex-direction:column; gap:0.9rem; margin-top:1.8rem; }
+.pill {
+  display:flex; align-items:center; gap:1rem;
+  background:#fff; border-radius:14px;
+  padding:0.85rem 1.2rem;
+  box-shadow:var(--shadow-sm);
+  border-left:4px solid var(--rosa);
+}
+.pill-icon { font-size:1.3rem; }
+.pill-text { font-size:0.88rem; font-weight:500; color:var(--roxo-escuro); }
+ 
+/* EVENTO CARDS */
+.evento-grid {
+  display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+  gap:1.4rem; margin-top:2.8rem; position:relative; z-index:1;
+}
+.evento-card { text-align:center; }
+.evento-icon { font-size:2.8rem; margin-bottom:0.7rem; }
+.evento-card h3 {
+  font-family:'Syne',sans-serif; color:#fff;
+  font-size:1.05rem; font-weight:700; margin-bottom:0.4rem;
+}
+.evento-card p { color:rgba(255,255,255,0.72); font-size:0.87rem; line-height:1.55; }
+ 
+/* PROGRAMAÇÃO */
+.prog-list { display:flex; flex-direction:column; gap:0.7rem; margin-top:2.5rem; }
+.prog-item {
+  display:grid; grid-template-columns:90px 1fr auto;
+  align-items:center; gap:1.2rem;
+  padding:1.3rem 1.4rem; border-radius:14px;
+  background:var(--rosa-pale);
+  border:1.5px solid transparent;
+  transition:border-color 0.2s, box-shadow 0.2s;
+}
+.prog-item:hover { border-color:var(--rosa); box-shadow:var(--shadow-sm); }
+.prog-time { font-family:'Syne',sans-serif; font-size:1rem; font-weight:700; color:var(--rosa); }
+.prog-info h4 { font-weight:600; font-size:0.95rem; color:var(--roxo-escuro); }
+.prog-info p { font-size:0.82rem; color:#999; margin-top:0.2rem; }
+.prog-badge {
+  background:var(--grad-card); color:#fff;
+  padding:0.28rem 0.85rem; border-radius:50px;
+  font-size:0.72rem; font-weight:600; white-space:nowrap;
+}
+ 
+/* PARTNERS */
+.logo-grid {
+  display:flex; flex-wrap:wrap; align-items:center;
+  justify-content:center; gap:1.2rem; margin-top:2.5rem;
+}
+.logo-pill {
+  background:#fff; border-radius:12px; padding:0.9rem 1.8rem;
+  font-family:'Syne',sans-serif; font-weight:700; font-size:0.85rem;
+  color:var(--roxo); border:1.5px solid #e8d0f0;
+  box-shadow:var(--shadow-sm);
+  transition:transform 0.2s, box-shadow 0.2s;
+}
+.logo-pill:hover { transform:translateY(-2px); box-shadow:var(--shadow-md); }
+ 
+@media(max-width:700px){
+  .sobre-grid { grid-template-columns:1fr; }
+  .sobre-visual { display:none; }
+  .prog-item { grid-template-columns:70px 1fr; }
+  .prog-badge { display:none; }
+}
+</style>
+</head>
+<body>
+ 
+<!-- NAVBAR -->
+<nav class="navbar">
+  <a href="index.html" class="nav-logo">ELAS-<span>&lt;TIC&gt;</span></a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html" class="active">Início</a></li>
+    <li><a href="meninas-ti.html">Meninas no DS</a></li>
+    <li><a href="equipe.html">Equipe</a></li>
+    <li><a href="inscricao.html">Inscrição</a></li>
+  </ul>
+  <a href="inscricao.html" class="nav-cta">Inscreva-se grátis</a>
+  <button class="nav-hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+ 
+<!-- IMAGE TICKER 
+<div class="img-ticker" style="margin-top:64px">
+  <div class="img-ticker-track" id="imgTicker">
+    <!-- SVG placeholder banners 
+    <svg class="ticker-img" viewBox="0 0 140 72" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="g1" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#3d0040"/><stop offset="100%" stop-color="#e91e8c"/></linearGradient></defs><rect width="140" height="72" fill="url(#g1)"/><text x="50%" y="38%" font-family="sans-serif" font-weight="800" font-size="13" fill="#fff" text-anchor="middle">ELAS-&lt;TIC&gt;</text><text x="50%" y="58%" font-family="sans-serif" font-size="9" fill="rgba(255,255,255,0.7)" text-anchor="middle">2026</text></svg>
+    <div class="ticker-label">★ Evento</div>
+    <svg class="ticker-img" viewBox="0 0 140 72" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="g2" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#c01070"/><stop offset="100%" stop-color="#ff6b35"/></linearGradient></defs><rect width="140" height="72" fill="url(#g2)"/><text x="50%" y="38%" font-family="sans-serif" font-weight="800" font-size="11" fill="#fff" text-anchor="middle">Oficinas</text><text x="50%" y="58%" font-family="sans-serif" font-size="9" fill="rgba(255,255,255,0.7)" text-anchor="middle">Programação · IA · Design</text></svg>
+    <div class="ticker-label">☕ Café</div>
+    <svg class="ticker-img" viewBox="0 0 140 72" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="g3" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#6a0572"/><stop offset="100%" stop-color="#ff6ec7"/></linearGradient></defs><rect width="140" height="72" fill="url(#g3)"/><text x="50%" y="38%" font-family="sans-serif" font-weight="800" font-size="11" fill="#fff" text-anchor="middle">Certificado</text><text x="50%" y="58%" font-family="sans-serif" font-size="9" fill="rgba(255,255,255,0.7)" text-anchor="middle">UNICAMP · COTIL</text></svg>
+    <div class="ticker-label">📍 COTIL Limeira</div>
+    <svg class="ticker-img" viewBox="0 0 140 72" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="g4" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#e91e8c"/><stop offset="100%" stop-color="#3d0040"/></linearGradient></defs><rect width="140" height="72" fill="url(#g4)"/><text x="50%" y="38%" font-family="sans-serif" font-weight="800" font-size="11" fill="#ffcc02" text-anchor="middle">Agosto 2026</text><text x="50%" y="58%" font-family="sans-serif" font-size="9" fill="rgba(255,255,255,0.7)" text-anchor="middle">Garante sua vaga!</text></svg>
+    <div class="ticker-label">🎓 Gratuito</div>
+    <svg class="ticker-img" viewBox="0 0 140 72" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="g5" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#ff6b35"/><stop offset="100%" stop-color="#c01070"/></linearGradient></defs><rect width="140" height="72" fill="url(#g5)"/><text x="50%" y="38%" font-family="sans-serif" font-weight="800" font-size="10" fill="#fff" text-anchor="middle">Meninas na TI</text><text x="50%" y="58%" font-family="sans-serif" font-size="8" fill="rgba(255,255,255,0.75)" text-anchor="middle">8º EF ao 3º EM</text></svg>
+    <!-- duplicados para loop 
+    <svg class="ticker-img" viewBox="0 0 140 72" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="g1b" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#3d0040"/><stop offset="100%" stop-color="#e91e8c"/></linearGradient></defs><rect width="140" height="72" fill="url(#g1b)"/><text x="50%" y="38%" font-family="sans-serif" font-weight="800" font-size="13" fill="#fff" text-anchor="middle">ELAS-&lt;TIC&gt;</text><text x="50%" y="58%" font-family="sans-serif" font-size="9" fill="rgba(255,255,255,0.7)" text-anchor="middle">2026</text></svg>
+    <div class="ticker-label">★ Evento</div>
+    <svg class="ticker-img" viewBox="0 0 140 72" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="g2b" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#c01070"/><stop offset="100%" stop-color="#ff6b35"/></linearGradient></defs><rect width="140" height="72" fill="url(#g2b)"/><text x="50%" y="38%" font-family="sans-serif" font-weight="800" font-size="11" fill="#fff" text-anchor="middle">Oficinas</text><text x="50%" y="58%" font-family="sans-serif" font-size="9" fill="rgba(255,255,255,0.7)" text-anchor="middle">Programação · IA · Design</text></svg>
+    <div class="ticker-label">☕ Café</div>
+    <svg class="ticker-img" viewBox="0 0 140 72" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="g3b" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#6a0572"/><stop offset="100%" stop-color="#ff6ec7"/></linearGradient></defs><rect width="140" height="72" fill="url(#g3b)"/><text x="50%" y="38%" font-family="sans-serif" font-weight="800" font-size="11" fill="#fff" text-anchor="middle">Certificado</text><text x="50%" y="58%" font-family="sans-serif" font-size="9" fill="rgba(255,255,255,0.7)" text-anchor="middle">UNICAMP · COTIL</text></svg>
+    <div class="ticker-label">📍 COTIL Limeira</div>
+    <svg class="ticker-img" viewBox="0 0 140 72" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="g4b" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#e91e8c"/><stop offset="100%" stop-color="#3d0040"/></linearGradient></defs><rect width="140" height="72" fill="url(#g4b)"/><text x="50%" y="38%" font-family="sans-serif" font-weight="800" font-size="11" fill="#ffcc02" text-anchor="middle">Agosto 2026</text><text x="50%" y="58%" font-family="sans-serif" font-size="9" fill="rgba(255,255,255,0.7)" text-anchor="middle">Garante sua vaga!</text></svg>
+    <div class="ticker-label">🎓 Gratuito</div>
+    <svg class="ticker-img" viewBox="0 0 140 72" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="g5b" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#ff6b35"/><stop offset="100%" stop-color="#c01070"/></linearGradient></defs><rect width="140" height="72" fill="url(#g5b)"/><text x="50%" y="38%" font-family="sans-serif" font-weight="800" font-size="10" fill="#fff" text-anchor="middle">Meninas na TI</text><text x="50%" y="58%" font-family="sans-serif" font-size="8" fill="rgba(255,255,255,0.75)" text-anchor="middle">8º EF ao 3º EM</text></svg>
+  </div>
+</div> -->
+ 
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-dots"></div><div class="hero-glow"></div>
+  <div class="hero-badge">UNICAMP · COTIL · DEEDUC · Agosto 2026</div>
+  <h1>ELAS-<span class="tag">&lt;TIC&gt;</span></h1>
+  <div class="hero-year">2 0 2 6</div>
+  <p class="hero-sub">Um evento exclusivo para meninas até o 9º ano</p>
+  <div class="hero-btns">
+    <a href="inscricao.html" class="btn btn-white"> Quero participar</a>
+    <a href="meninas-ti.html" class="btn btn-outline-white">Mulheres no DS</a>
+  </div>
+  <div class="hero-stats">
+    <div class="stat"><div class="stat-num">1 dia</div><div class="stat-label">de imersão</div></div>
+    <div class="stat"><div class="stat-num">Ago/26</div><div class="stat-label">data do evento</div></div>
+    <div class="stat"><div class="stat-num">3+</div><div class="stat-label">oficinas práticas</div></div>
+    <div class="stat"><div class="stat-num">100%</div><div class="stat-label">gratuito</div></div>
+  </div>
+  <div class="scroll-hint"><div class="scroll-arrow"></div><span>rolar</span></div>
+</section>
+ 
+<!-- TEXT TICKER -->
+<div class="text-ticker">
+  <div class="text-ticker-track">
+    <div class="ticker-item"><div class="dot"></div><strong>ELAS-&lt;TIC&gt; 2026</strong> — Sua carreira em TI começa aqui!</div>
+    <div class="ticker-item"><div class="dot"></div><strong>Café de Boas-Vindas</strong> para todas as participantes</div>
+    <div class="ticker-item"><div class="dot"></div><strong>Oficinas práticas</strong> de programação, design e IA</div>
+    <div class="ticker-item"><div class="dot"></div> <strong>Certificado UNICAMP/COTIL</strong> ao final do evento</div>
+    <div class="ticker-item"><div class="dot"></div> <strong>Agosto de 2026</strong> — Inscrições abertas!</div>
+    <div class="ticker-item"><div class="dot"></div> Para <strong>Um evento exclusivo para meninas até o 9º ano</strong> · entrada gratuita</div>
+    <div class="ticker-item"><div class="dot"></div><strong>UNICAMP · COTIL · DEEDUC · MCIO · Mudando Minha História</strong></div>
+    <!-- duplicados -->
+    <div class="ticker-item"><div class="dot"></div><strong>ELAS-&lt;TIC&gt; 2026</strong> — Sua carreira em TI começa aqui!</div>
+    <div class="ticker-item"><div class="dot"></div> <strong>Café de Boas-Vindas</strong> para todas as participantes</div>
+    <div class="ticker-item"><div class="dot"></div> <strong>Oficinas práticas</strong> de programação, design e IA</div>
+    <div class="ticker-item"><div class="dot"></div><strong>Certificado UNICAMP/COTIL</strong> ao final do evento</div>
+    <div class="ticker-item"><div class="dot"></div> <strong>Agosto de 2026</strong> — Inscrições abertas!</div>
+    <div class="ticker-item"><div class="dot"></div> Para <strong>meninas do 8º EF ao 3º EM</strong> · entrada gratuita</div>
+    <div class="ticker-item"><div class="dot"></div><strong>UNICAMP · COTIL · DEEDUC · MCIO · Mudando Minha História</strong></div>
+  </div>
+</div>
+ 
+<!-- SOBRE -->
+<section class="section section--pale" id="sobre">
+  <div class="sobre-grid">
+    <div>
+      <span class="section-tag">O projeto</span>
+      <h2 class="section-title">O que é o<br><span>ELAS-&lt;TIC&gt;?</span></h2>
+      <p class="section-body">
+        Uma iniciativa do Departamento de Computação do <strong>COTIL/UNICAMP</strong>, com apoio da PROEEC, dedicada a incentivar a profissionalização de meninas e mulheres na área de TIC. Em 2026, queremos mostrar para cada participante que o mundo da tecnologia também é <strong>seu</strong>.
+      </p>
+      <div class="pills">
+        <div class="pill"><div class="pill-icon"></div><div class="pill-text">Oficinas práticas com profissionais da área</div></div>
+        <div class="pill"><div class="pill-icon"></div><div class="pill-text">Café de boas-vindas e networking</div></div>
+        <div class="pill"><div class="pill-icon"></div><div class="pill-text">Certificado de participação UNICAMP/COTIL</div></div>
+        <div class="pill"><div class="pill-icon"></div><div class="pill-text">Contato com monitoras, docentes e profissionais</div></div>
+      </div>
+    </div>
+    <div class="sobre-visual">
+      <div class="sobre-visual-text">ELAS-<br>&lt;TIC&gt;</div>
+    </div>
+  </div>
+</section>
+ 
+<!-- EVENTO -->
+<section class="section section--dark" id="evento">
+  <span class="section-tag section-tag--light">O que vai rolar</span>
+  <h2 class="section-title section-title--light">Atividades do <span>evento</span></h2>
+  <div class="evento-grid">
+    <div class="card-glass evento-card"><div class="evento-icon"></div><h3>Oficina de Programação</h3><p>Crie seu primeiro programa com monitoras guiando cada passo.</p></div>
+    <div class="card-glass evento-card"><div class="evento-icon"></div><h3>Oficina de Design Digital</h3><p>Interfaces, identidades visuais e UX/UI com ferramentas profissionais.</p></div>
+    <div class="card-glass evento-card"><div class="evento-icon"></div><h3>Oficina de Inteligência Artificial</h3><p>Explore IA, machine learning e as carreiras do futuro.</p></div>
+    <div class="card-glass evento-card"><div class="evento-icon"></div><h3>Café de Boas-Vindas</h3><p>Acolhimento, networking e apresentação antes das atividades.</p></div>
+    <div class="card-glass evento-card"><div class="evento-icon"></div><h3>Palestras Inspiradoras</h3><p>Mulheres em TI compartilhando histórias e conquistas reais.</p></div>
+    <div class="card-glass evento-card"><div class="evento-icon"></div><h3>Entrega de Certificados</h3><p>Certificado oficial COTIL/UNICAMP para todas as participantes.</p></div>
+  </div>
+</section>
+ 
+<!-- PROGRAMAÇÃO -->
+<section class="section section--white" id="programacao">
+  <span class="section-tag">Agenda do dia</span>
+  <h2 class="section-title">Como será a <span>programação?</span></h2>
+  <div class="prog-list">
+    <div class="prog-item"><div class="prog-time">08h00</div><div class="prog-info"><h4>Credenciamento e Recepção</h4><p>Retirada do crachá e material do evento</p></div><div class="prog-badge">Entrada</div></div>
+    <div class="prog-item"><div class="prog-time">08h30</div><div class="prog-info"><h4>Café de Boas-Vindas ☕</h4><p>Networking e apresentação do projeto ELAS-&lt;TIC&gt;</p></div><div class="prog-badge">Social</div></div>
+    <div class="prog-item"><div class="prog-time">09h00</div><div class="prog-info"><h4>Abertura Oficial + Palestra</h4><p>Apresentação do projeto e mulheres na TI</p></div><div class="prog-badge">Palestra</div></div>
+    <div class="prog-item"><div class="prog-time">10h00</div><div class="prog-info"><h4>Oficinas Práticas — Rodízio</h4><p>Programação · Design · Inteligência Artificial</p></div><div class="prog-badge">Oficinas</div></div>
+    <div class="prog-item"><div class="prog-time">12h00</div><div class="prog-info"><h4>Encerramento e Certificados</h4><p>Foto oficial, certificados e avaliação do evento</p></div><div class="prog-badge">Encerramento</div></div>
+  </div>
+</section>
+ 
+<!-- PARCEIROS -->
+<section class="section section--pale" id="parceiros">
+  <span class="section-tag" style="text-align:center;display:block">Quem torna possível</span>
+  <h2 class="section-title" style="text-align:center">Realização & <span>Apoio</span></h2>
+  <div class="logo-grid">
+    <div class="logo-pill"> UNICAMP</div>
+    <div class="logo-pill">COTIL</div>
+    <div class="logo-pill"> DEEDUC</div>
+    <div class="logo-pill"> MCIO Brasil</div>
+    <div class="logo-pill"> Mudando Minha História</div>
+  </div>
+  <div style="text-align:center;margin-top:2.5rem">
+    <a href="equipe.html" class="btn btn-primary">Conheça nossa equipe →</a>
+  </div>
+</section>
+ 
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-links">
+    <a href="index.html">Início</a>
+    <a href="meninas-ti.html">Meninas na TI</a>
+    <a href="equipe.html">Equipe</a>
+    <a href="inscricao.html">Inscrição</a>
+  </div>
+  <p><strong>ELAS-&lt;TIC&gt; 2026</strong> · UNICAMP · Colégio Técnico de Limeira – COTIL</p>
+  <p style="margin-top:0.4rem;opacity:0.5;font-size:0.78rem">Desenvolvido com 💜 pelo time ELAS-&lt;TIC&gt;</p>
+</footer>
+ 
+<script>
+const ham = document.getElementById('hamburger');
+const nav = document.getElementById('navLinks');
+ham.addEventListener('click', () => nav.classList.toggle('open'));
+</script>
+</body>
+</html>
+ 

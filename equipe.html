@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Equipe | ELAS-&lt;TIC&gt; 2026</title>
+<link rel="stylesheet" href="shared.css">
+<style>
+/* ===== EQUIPE PAGE ===== */
+.page-hero {
+  padding:140px 6vw 70px;
+  background:var(--grad-main);
+  position:relative; overflow:hidden; text-align:center;
+}
+.page-hero::before {
+  content:''; position:absolute; inset:0;
+  background-image:radial-gradient(rgba(255,255,255,0.09) 1px,transparent 1px);
+  background-size:26px 26px; pointer-events:none;
+}
+.page-hero h1 {
+  font-family:'Syne',sans-serif;
+  font-size:clamp(2.5rem,7vw,5rem); font-weight:800;
+  color:#fff; line-height:1; letter-spacing:-2px; margin-bottom:0.8rem;
+}
+.page-hero h1 span { color:var(--amarelo); }
+.page-hero p { color:rgba(255,255,255,0.8); max-width:520px; margin:0 auto; font-size:1rem; line-height:1.7; }
+ 
+/* SECTION DIVIDERS */
+.group-label {
+  font-family:'Syne',sans-serif; font-weight:800;
+  font-size:1.4rem; color:var(--roxo-escuro);
+  margin-bottom:0.3rem; margin-top:3rem;
+}
+.group-desc { font-size:0.88rem; color:var(--texto-suave); margin-bottom:1.5rem; }
+ 
+/* TEAM CARDS */
+.team-grid { display:flex; flex-wrap:wrap; gap:1.5rem; }
+.team-card {
+  display:flex; flex-direction:column; align-items:center; gap:0.6rem;
+  cursor:pointer; width:120px;
+  transition:transform 0.2s;
+}
+.team-card:hover { transform:translateY(-4px); }
+.team-avatar {
+  width:96px; height:96px; border-radius:50%;
+  background:var(--grad-main);
+  display:flex; align-items:center; justify-content:center;
+  font-family:'Syne',sans-serif; font-size:1.8rem; font-weight:800;
+  color:#fff;
+  border:3px solid rgba(233,30,140,0.15);
+  transition:all 0.22s;
+  box-shadow:var(--shadow-sm);
+  position:relative; overflow:hidden;
+}
+.team-avatar .avatar-initials {
+  position:relative; z-index:1; pointer-events:none;
+}
+.team-card:hover .team-avatar {
+  border-color:var(--rosa);
+  box-shadow:0 0 0 5px rgba(233,30,140,0.18), var(--shadow-md);
+  transform:scale(1.06);
+}
+.team-name { font-weight:600; font-size:0.8rem; text-align:center; color:var(--roxo-escuro); line-height:1.3; }
+.team-role-tag { font-size:0.7rem; color:var(--rosa); font-weight:500; text-align:center; }
+.click-hint {
+  font-size:0.65rem; color:#ccc; margin-top:-0.2rem;
+  transition:color 0.2s;
+}
+.team-card:hover .click-hint { color:var(--rosa); }
+ 
+/* MODAL */
+.modal-role-tag {
+  display:inline-block;
+  background:var(--rosa-pale); color:var(--rosa);
+  padding:0.3rem 0.9rem; border-radius:50px;
+  font-size:0.75rem; font-weight:700;
+  letter-spacing:0.05em; margin-bottom:1rem;
+}
+.modal-name { font-family:'Syne',sans-serif; font-size:1.4rem; font-weight:800; color:var(--roxo-escuro); margin-bottom:0.4rem; }
+.modal-desc { font-size:0.92rem; color:var(--texto-suave); line-height:1.7; }
+.modal-avatar-big {
+  width:80px; height:80px; border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  font-family:'Syne',sans-serif; font-size:1.8rem; font-weight:800;
+  color:#fff; margin:0 auto 1.2rem;
+  box-shadow:var(--shadow-md);
+}
+.modal-skills { display:flex; flex-wrap:wrap; gap:0.4rem; margin-top:1rem; }
+.skill-tag {
+  background:#fff; border:1.5px solid #e8d0f0;
+  color:var(--roxo); font-size:0.72rem; font-weight:600;
+  padding:0.25rem 0.7rem; border-radius:50px;
+}
+ 
+/* DEVELOPERS */
+.dev-section { background:var(--roxo-escuro); }
+.dev-section .section-tag { color:rgba(255,255,255,0.6); }
+.dev-section .section-title { color:#fff; }
+.dev-section .section-title span { color:var(--amarelo); }
+.dev-section .group-label { color:rgba(255,255,255,0.9); }
+.dev-section .group-desc { color:rgba(255,255,255,0.55); }
+.dev-section .team-name { color:rgba(255,255,255,0.9); }
+.dev-section .team-role-tag { color:var(--rosa-claro); }
+.dev-section .click-hint { color:rgba(255,255,255,0.3); }
+.dev-section .team-card:hover .click-hint { color:var(--rosa-claro); }
+ 
+@media(max-width:500px){
+  .team-card { width:90px; }
+  .team-avatar { width:76px; height:76px; font-size:1.4rem; }
+}
+</style>
+</head>
+<body>
+ 
+<!-- NAVBAR -->
+<nav class="navbar">
+  <a href="index.html" class="nav-logo">ELAS-<span>&lt;TIC&gt;</span></a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html" class="active">Início</a></li>
+    <li><a href="meninas-ti.html">Meninas no DS</a></li>
+    <li><a href="equipe.html">Equipe</a></li>
+    <li><a href="inscricao.html">Inscrição</a></li>
+  </ul>
+  <a href="inscricao.html" class="nav-cta">Inscreva-se grátis</a>
+  <button class="nav-hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+ 
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="hero-badge" style="display:inline-block;background:rgba(255,255,255,0.13);border:1px solid rgba(255,255,255,0.28);color:#fff;padding:0.4rem 1.2rem;border-radius:50px;font-size:0.8rem;font-weight:600;letter-spacing:0.05em;margin-bottom:1.5rem">✦ Conheça quem faz acontecer</div>
+  <h1>Nossa <span>equipe</span></h1>
+  <p>Professoras, monitoras, colaboradores e desenvolvedores que tornam o ELAS-&lt;TIC&gt; possível — clique em cada integrante para saber mais.</p>
+</section>
+ 
+<div class="text-ticker">
+  <div class="text-ticker-track">
+    <div class="ticker-item"><div class="dot"></div><strong>ELAS-&lt;TIC&gt; 2026</strong> — Sua carreira em TI começa aqui!</div>
+    <div class="ticker-item"><div class="dot"></div><strong>Café de Boas-Vindas</strong> para todas as participantes</div>
+    <div class="ticker-item"><div class="dot"></div><strong>Oficinas práticas</strong> de programação, design e IA</div>
+    <div class="ticker-item"><div class="dot"></div> <strong>Certificado UNICAMP/COTIL</strong> ao final do evento</div>
+    <div class="ticker-item"><div class="dot"></div> <strong>Agosto de 2026</strong> — Inscrições abertas!</div>
+    <div class="ticker-item"><div class="dot"></div> Para <strong>Um evento exclusivo para meninas até o 9º ano</strong> · entrada gratuita</div>
+    <div class="ticker-item"><div class="dot"></div><strong>UNICAMP · COTIL · DEEDUC · MCIO · Mudando Minha História</strong></div>
+  </div>
+</div>
+ 
+<!-- COORDENAÇÃO / DOCENTES -->
+<section class="section section--white">
+  <span class="section-tag">Quem lidera</span>
+  <h2 class="section-title">Coordenação & <span>Docentes</span></h2>
+  <p class="section-body">As professoras e coordenadoras do Departamento de Computação do COTIL/UNICAMP que idealizam e realizam o projeto.</p>
+ 
+  <div class="group-label" style="margin-top:2rem"> Professoras Coordenadoras</div>
+  <div class="group-desc">Responsáveis pela concepção, organização e condução do ELAS-&lt;TIC&gt;</div>
+  <div class="team-grid" id="coordGrid"></div>
+ 
+  <div class="group-label">Palestrantes Confirmados</div>
+  <div class="group-desc">Parceiros da PROEEC, DEEDUC e outras instâncias da UNICAMP</div>
+  <div class="team-grid" id="colabGrid"></div>
+</section>
+ 
+<!-- MONITORAS -->
+<section class="section section--pale">
+  <span class="section-tag">Na linha de frente</span>
+  <h2 class="section-title">Monitoras <span>voluntárias</span></h2>
+  <p class="section-body">Alunas e ex-alunas do COTIL que guiam as participantes durante as oficinas com dedicação e entusiasmo.</p>
+ 
+  <div class="group-label" style="margin-top:2rem">💻 Monitoras — Programação</div>
+  <div class="group-desc">Responsáveis pela oficina de lógica e programação</div>
+  <div class="team-grid" id="monitorProg"></div>
+ 
+  <div class="group-label"> Monitoras — Design Digital</div>
+  <div class="group-desc">Responsáveis pela oficina de UX/UI e Design</div>
+  <div class="team-grid" id="monitorDesign"></div>
+ 
+  <div class="group-label"> Monitoras — Inteligência Artificial</div>
+  <div class="group-desc">Responsáveis pela oficina de IA e Machine Learning</div>
+  <div class="team-grid" id="monitorIA"></div>
+</section>
+ 
+<!-- DESENVOLVEDORES 
+<section class="section dev-section">
+  <span class="section-tag">Quem construiu</span>
+  <h2 class="section-title">Desenvolvedores do <span>Portal</span></h2>
+  <p class="section-body" style="color:rgba(255,255,255,0.75)">O time de tecnologia responsável por criar e manter o portal ELAS-&lt;TIC&gt; 2026.</p>
+ 
+  <div class="group-label" style="margin-top:2rem">⚡ Front-end</div>
+  <div class="group-desc">Interfaces, design e experiência do usuário</div>
+  <div class="team-grid" id="devFront"></div>
+ 
+  <div class="group-label">Back-end & Infraestrutura</div>
+  <div class="group-desc">Servidores, banco de dados e APIs</div>
+  <div class="team-grid" id="devBack"></div>
+</section>-->
+ 
+<!-- MODAL -->
+<div class="modal-overlay" id="memberModal">
+  <div class="modal-box">
+    <button class="modal-close" id="modalClose">×</button>
+    <div class="modal-avatar-big" id="modalAvatar"></div>
+    <div class="modal-role-tag" id="modalTag"></div>
+    <div class="modal-name" id="modalName"></div>
+    <p class="modal-desc" id="modalDesc"></p>
+    <div class="modal-skills" id="modalSkills"></div>
+  </div>
+</div>
+ 
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-links">
+    <a href="index.html">Início</a><a href="meninas-ti.html">Meninas na TI</a>
+    <a href="equipe.html">Equipe</a><a href="inscricao.html">Inscrição</a>
+  </div>
+  <p><strong>ELAS-&lt;TIC&gt; 2026</strong> · UNICAMP · COTIL</p>
+  <p style="margin-top:0.4rem;opacity:0.5;font-size:0.78rem">Desenvolvido com 💜 pelo time ELAS-&lt;TIC&gt;</p>
+</footer>
+ 
+<script>
+// ---- DATA ----
+const MEMBERS = {
+  coordGrid: [
+    { initials:'PR', color:'linear-gradient(135deg,#3d0040,#e91e8c)', name:'Profa. Responsável', role:'Coordenadora Geral', desc:'Docente do Departamento de Computação do COTIL/UNICAMP. Idealizadora do projeto ELAS-&lt;TIC&gt;, lidera a coordenação geral do evento, articulando parceiros institucionais, monitoras e toda a programação do dia.', skills:['Computação','Educação','Gestão de Projetos','Extensão Universitária'] },
+    { initials:'PA', color:'linear-gradient(135deg,#6a0572,#ff6ec7)', name:'Profa. Apoio', role:'Coordenadora Pedagógica', desc:'Responsável pela curadoria pedagógica das oficinas e palestras. Garante que o conteúdo seja acessível, inspirador e alinhado ao público jovem feminino.', skills:['Pedagogia','TI','Didática','Currículo'] },
+   // { initials:'PB', color:'linear-gradient(135deg,#c01070,#ff6b35)', name:'Prof. Colaborador', role:'Docente Convidado', desc:'Docente do Departamento de Computação com experiência em projetos de extensão e inclusão digital. Apoia a concepção das oficinas técnicas.', skills:['Programação','Extensão','Inclusão Digital'] },
+  ],
+  colabGrid: [
+    { initials:'CA', color:'linear-gradient(135deg,#1a3a6e,#0066cc)', name:'Colaborador PROEEC', role:'Apoio Institucional', desc:'Representante da Pró-Reitoria de Extensão, Esportes e Cultura (PROEEC) da UNICAMP, responsável pelo apoio institucional e financeiro ao projeto.', skills:['Gestão Pública','Extensão','UNICAMP'] },
+    { initials:'CD', color:'linear-gradient(135deg,#2d4a00,#5a9900)', name:'Colaborador DEEDUC', role:'Apoio DEEDUC', desc:'Parceiro da DEEDUC que apoia a divulgação do projeto em escolas públicas estaduais e facilita o acesso das alunas ao evento.', skills:['Educação Pública','Articulação Escolar'] },
+    { initials:'CM', color:'linear-gradient(135deg,#7a3500,#e07000)', name:'Colaborador MCIO', role:'Apoio MCIO Brasil', desc:'Representante do MCIO Brasil, parceiro de apoio que contribui com recursos e visibilidade para o projeto de incentivo a meninas na tecnologia.', skills:['Inclusão Digital','Parcerias'] },
+  ],
+  monitorProg: [
+    { initials:'MP', color:'linear-gradient(135deg,#3d0040,#e91e8c)', name:'Monitora — Programação', role:'Monitora · Programação', desc:'Aluna do curso técnico do COTIL, responsável por guiar as participantes na oficina de lógica de programação. Prepara os exercícios e acompanha cada participante individualmente.', skills:['Python','Lógica','HTML','Didática'] },
+    { initials:'MA', color:'linear-gradient(135deg,#1a006e,#6644cc)', name:'Monitora — Algoritmos', role:'Monitora · Programação', desc:'Especializada em algoritmos e resolução de problemas, ajuda as meninas a darem seus primeiros passos no mundo do código de forma lúdica e acessível.', skills:['Algoritmos','JavaScript','Ensino'] },
+  ],
+  monitorDesign: [
+    { initials:'MD', color:'linear-gradient(135deg,#6a0030,#cc2288)', name:'Monitora — UX/UI', role:'Monitora · Design Digital', desc:'Responsável pela oficina de design, ensina conceitos de identidade visual, tipografia e prototipagem usando ferramentas modernas como Figma.', skills:['Figma','UI Design','Branding','UX'] },
+    { initials:'MV', color:'linear-gradient(135deg,#4a0060,#aa44dd)', name:'Monitora — Visual', role:'Monitora · Design Digital', desc:'Foca em design visual e ilustração digital, mostrando como arte e tecnologia se unem na criação de produtos digitais incríveis.', skills:['Ilustração','Canva','Design Visual'] },
+  ],
+  monitorIA: [
+    { initials:'MI', color:'linear-gradient(135deg,#003355,#0088cc)', name:'Monitora — IA', role:'Monitora · Inteligência Artificial', desc:'Apaixonada por machine learning, apresenta IA de forma acessível para meninas sem nenhum conhecimento prévio, usando exemplos do cotidiano.', skills:['Python','Machine Learning','IA Generativa','Dados'] },
+    { initials:'MR', color:'linear-gradient(135deg,#003300,#009944)', name:'Monitora — Robótica', role:'Monitora · IA & Robótica', desc:'Trabalha com a interseção entre IA e robótica, mostrando como algoritmos tomam decisões em sistemas físicos e no mundo real.', skills:['Robótica','Arduino','IA','IoT'] },
+  ],
+  //devFront: [
+   // { initials:'DF', color:'linear-gradient(135deg,#3d0040,#e91e8c)', name:'Dev Front-end', role:'Desenvolvedor(a) Front-end', desc:'Responsável pela criação da interface visual do portal ELAS-&lt;TIC&gt; 2026. Cuidou do design system, componentes, acessibilidade e experiência do usuário em todos os dispositivos.', skills:['HTML','CSS','JavaScript','React','Design'] },
+  //  { initials:'DU', color:'linear-gradient(135deg,#6a0572,#ff6ec7)', name:'Dev UI/UX', role:'Designer & Desenvolvedor(a)', desc:'Responsável pelo design das páginas e pela identidade visual do portal. Trabalhou a paleta de cores, tipografia e todos os elementos visuais do projeto.', skills:['Figma','CSS','Branding','UX Research'] },
+ // ],
+  //devBack: [
+  //  { initials:'DB', color:'linear-gradient(135deg,#1a3a6e,#0066cc)', name:'Dev Back-end', role:'Desenvolvedor(a) Back-end', desc:'Responsável pelo servidor, banco de dados e API de formulários de inscrição. Garantiu que todos os dados das participantes sejam armazenados com segurança e conformidade com a LGPD.', skills:['Node.js','PostgreSQL','API REST','LGPD','Deploy'] },
+  //  { initials:'DI', color:'linear-gradient(135deg,#2d4a00,#5a9900)', name:'Dev Infra', role:'DevOps & Infraestrutura', desc:'Cuida da hospedagem, CI/CD, segurança e disponibilidade do portal. Garante que o site funcione perfeitamente para todas as usuárias, em qualquer dispositivo.', skills:['Linux','Docker','CI/CD','Segurança Web'] },
+ // ],
+};
+ 
+// ---- RENDER GRIDS ----
+Object.keys(MEMBERS).forEach(gridId => {
+  const container = document.getElementById(gridId);
+  if(!container) return;
+  MEMBERS[gridId].forEach(member => {
+    const card = document.createElement('div');
+    card.className = 'team-card';
+    card.innerHTML = `
+      <div class="team-avatar" style="background:${member.color}">
+        <span class="avatar-initials">${member.initials}</span>
+      </div>
+      <div class="team-name">${member.name}</div>
+      <div class="team-role-tag">${member.role}</div>
+      <div class="click-hint">clique para ver mais</div>
+    `;
+    card.addEventListener('click', () => openModal(member));
+    container.appendChild(card);
+  });
+});
+ 
+// ---- MODAL ----
+function openModal(member){
+  document.getElementById('modalAvatar').style.background = member.color;
+  document.getElementById('modalAvatar').textContent = member.initials;
+  document.getElementById('modalTag').textContent = member.role;
+  document.getElementById('modalName').textContent = member.name;
+  document.getElementById('modalDesc').innerHTML = member.desc;
+  const skills = document.getElementById('modalSkills');
+  skills.innerHTML = member.skills.map(s=>`<span class="skill-tag">${s}</span>`).join('');
+  document.getElementById('memberModal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeModal(){
+  document.getElementById('memberModal').classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.getElementById('modalClose').addEventListener('click', closeModal);
+document.getElementById('memberModal').addEventListener('click', e => { if(e.target.id==='memberModal') closeModal(); });
+ 
+// hamburger
+document.getElementById('hamburger').addEventListener('click',()=>document.getElementById('navLinks').classList.toggle('open'));
+</script>
+</body>
+</html>
+ 

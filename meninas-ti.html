@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Meninas na TI | ELAS-&lt;TIC&gt; 2026</title>
+<link rel="stylesheet" href="shared.css">
+<style>
+/* ===== MENINAS NA TI PAGE ===== */
+ 
+.page-hero {
+  padding: 140px 6vw 80px;
+  background: var(--grad-main);
+  position: relative; overflow: hidden; text-align: center;
+}
+.page-hero::before {
+  content:''; position:absolute; inset:0;
+  background-image:radial-gradient(rgba(255,255,255,0.09) 1px,transparent 1px);
+  background-size:26px 26px; pointer-events:none;
+}
+.page-hero h1 {
+  font-family:'Syne',sans-serif;
+  font-size:clamp(2.5rem,7vw,5.5rem);
+  font-weight:800; color:#fff; line-height:1;
+  letter-spacing:-2px; margin-bottom:1rem; position:relative;
+}
+.page-hero h1 em { color:var(--amarelo); font-style:normal; }
+.page-hero p {
+  font-size:clamp(1rem,1.8vw,1.15rem);
+  color:rgba(255,255,255,0.82); max-width:560px;
+  margin:0 auto 2rem; line-height:1.7;
+}
+ 
+/* STATS BAND */
+.stats-band {
+  background: var(--roxo-escuro);
+  border-top:2px solid var(--rosa);
+  border-bottom:2px solid var(--rosa);
+  padding: 2.5rem 6vw;
+}
+.stats-row {
+  display:flex; gap:2rem; flex-wrap:wrap; justify-content:center;
+}
+.stat-big { text-align:center; padding:0 1.5rem; }
+.stat-big-num {
+  font-family:'Syne',sans-serif; font-size:2.5rem; font-weight:800;
+  color:var(--amarelo); line-height:1;
+}
+.stat-big-label { font-size:0.82rem; color:rgba(255,255,255,0.65); margin-top:0.35rem; max-width:160px; }
+ 
+/* STIGMA SECTION */
+.stigma-grid {
+  display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:1.5rem; margin-top:2.5rem;
+}
+.stigma-card {
+  border-radius:var(--radius); padding:2rem 1.8rem;
+  background:#fff; border-left:5px solid var(--rosa);
+  box-shadow:var(--shadow-sm);
+}
+.stigma-myth {
+  font-size:0.72rem; font-weight:700; letter-spacing:0.1em;
+  text-transform:uppercase; color:#ccc; margin-bottom:0.5rem;
+}
+.stigma-title {
+  font-family:'Syne',sans-serif; font-size:1rem; font-weight:700;
+  color:#999; text-decoration:line-through; margin-bottom:0.8rem;
+}
+.stigma-truth {
+  font-family:'Syne',sans-serif; font-size:1.05rem; font-weight:800;
+  color:var(--roxo-escuro); margin-bottom:0.6rem;
+}
+.stigma-body { font-size:0.88rem; color:var(--texto-suave); line-height:1.6; }
+ 
+/* WOMEN CAROUSEL */
+.women-carousel-wrap { position:relative; overflow:hidden; margin-top:2.5rem; }
+.women-carousel {
+  display:flex; gap:1.5rem; transition:transform 0.5s cubic-bezier(.4,0,.2,1);
+  will-change:transform;
+}
+.woman-card {
+  min-width:280px; border-radius:var(--radius);
+  overflow:hidden; background:#fff;
+  box-shadow:var(--shadow-sm); flex-shrink:0;
+  border:1.5px solid rgba(233,30,140,0.1);
+  transition:transform 0.2s, box-shadow 0.2s;
+}
+.woman-card:hover { transform:translateY(-4px); box-shadow:var(--shadow-md); }
+.woman-banner {
+  height:130px; display:flex; align-items:center; justify-content:center;
+  font-size:3.5rem; position:relative; overflow:hidden;
+}
+.woman-body { padding:1.5rem; }
+.woman-name {
+  font-family:'Syne',sans-serif; font-weight:800; font-size:1.05rem;
+  color:var(--roxo-escuro); margin-bottom:0.2rem;
+}
+.woman-area {
+  font-size:0.75rem; font-weight:700; letter-spacing:0.08em;
+  text-transform:uppercase; color:var(--rosa); margin-bottom:0.7rem;
+}
+.woman-desc { font-size:0.85rem; color:var(--texto-suave); line-height:1.6; }
+.woman-quote {
+  margin-top:0.8rem; padding:0.7rem 1rem;
+  background:var(--rosa-pale); border-radius:8px;
+  font-size:0.82rem; font-style:italic; color:var(--roxo);
+  border-left:3px solid var(--rosa);
+}
+ 
+.carousel-nav {
+  display:flex; gap:0.8rem; justify-content:center;
+  margin-top:1.5rem;
+}
+.carousel-btn {
+  width:40px; height:40px; border-radius:50%;
+  background:#fff; border:2px solid var(--rosa);
+  color:var(--rosa); font-size:1.1rem; cursor:pointer;
+  display:flex; align-items:center; justify-content:center;
+  transition:all 0.2s;
+}
+.carousel-btn:hover { background:var(--rosa); color:#fff; }
+.carousel-dots { display:flex; gap:0.4rem; align-items:center; }
+.c-dot {
+  width:8px; height:8px; border-radius:50%;
+  background:#e8d0f0; cursor:pointer; transition:all 0.2s;
+}
+.c-dot.active { background:var(--rosa); width:20px; border-radius:4px; }
+ 
+/* WHY SECTION */
+.why-grid {
+  display:grid; grid-template-columns:1fr 1fr; gap:3rem; align-items:center;
+}
+.why-visual {
+  background:var(--grad-main); border-radius:24px; padding:3rem 2rem;
+  text-align:center; color:#fff;
+}
+.why-big {
+  font-family:'Syne',sans-serif; font-size:3.5rem; font-weight:800;
+  line-height:1; color:var(--amarelo); margin-bottom:0.5rem;
+}
+.why-list { display:flex; flex-direction:column; gap:1rem; margin-top:1.8rem; }
+.why-item {
+  display:flex; gap:1rem; align-items:flex-start;
+  background:#fff; border-radius:12px; padding:1rem 1.2rem;
+  box-shadow:var(--shadow-sm);
+  border-left: solid 4px var(--rosa);
+}
+.why-icon { font-size:1.5rem; flex-shrink:0; }
+.why-text h4 { font-weight:700; font-size:0.92rem; color:var(--roxo-escuro); margin-bottom:0.2rem; }
+.why-text p { font-size:0.83rem; color:var(--texto-suave); line-height:1.5; }
+ 
+/* CTA BAND */
+.cta-band {
+  background:var(--grad-main); padding:4rem 6vw;
+  text-align:center; position:relative; overflow:hidden;
+}
+.cta-band::before {
+  content:''; position:absolute; inset:0;
+  background-image:radial-gradient(rgba(255,255,255,0.07) 1px,transparent 1px);
+  background-size:22px 22px;
+}
+.cta-band h2 {
+  font-family:'Syne',sans-serif; font-size:clamp(1.8rem,4vw,3rem);
+  font-weight:800; color:#fff; margin-bottom:1rem; position:relative;
+}
+.cta-band p { color:rgba(255,255,255,0.8); margin-bottom:2rem; max-width:480px; margin-left:auto; margin-right:auto; position:relative; }
+ 
+@media(max-width:700px){
+  .why-grid { grid-template-columns:1fr; }
+  .woman-card { min-width:250px; }
+}
+</style>
+</head>
+<body>
+ 
+<!-- NAVBAR -->
+<nav class="navbar">
+  <a href="index.html" class="nav-logo">ELAS-<span>&lt;TIC&gt;</span></a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html" class="active">Início</a></li>
+    <li><a href="meninas-ti.html">Meninas no DS</a></li>
+    <li><a href="equipe.html">Equipe</a></li>
+    <li><a href="inscricao.html">Inscrição</a></li>
+  </ul>
+  <a href="inscricao.html" class="nav-cta">Inscreva-se grátis</a>
+  <button class="nav-hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+ 
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="hero-badge" style="display:inline-block;background:rgba(255,255,255,0.13);border:1px solid rgba(255,255,255,0.28);color:#fff;padding:0.4rem 1.2rem;border-radius:50px;font-size:0.8rem;font-weight:600;letter-spacing:0.05em;margin-bottom:1.5rem">✦ Quebrando o estigma</div>
+  <h1>Tecnologia<br>é <em>para elas</em></h1>
+  <p>O curso de Desenvolvimento de Sistemas, não tem e nunca teve dono. Conheça as mulheres que moldaram o mundo digital e descubra por que o futuro da tecnologia é feminino.</p>
+  <a href="#mulheres" class="btn btn-white" style="margin:0 auto">Descobrir →</a>
+</section>
+ 
+<!-- IMAGE TICKER -->
+
+<!-- STATS -->
+<div class="stats-band">
+  <div class="stats-row">
+    <div class="stat-big"><div class="stat-big-num">20%</div><div class="stat-big-label">dos profissionais de TI no Brasil são mulheres</div></div>
+    <div class="stat-big"><div class="stat-big-num">+30%</div><div class="stat-big-label">salário médio maior para profissionais de TI vs outras áreas</div></div>
+    <div class="stat-big"><div class="stat-big-num">500mil+</div><div class="stat-big-label">vagas abertas em tecnologia no Brasil até 2025</div></div>
+ 
+  </div>
+</div>
+ 
+<!-- QUEBRANDO O ESTIGMA -->
+<section class="section section--pale">
+  <span class="section-tag">Desmistificando</span>
+  <h2 class="section-title">Mitos x <span>Realidade</span></h2>
+  <p class="section-body">Chegou a hora de acabar de vez com os mitos que afastam meninas da tecnologia.</p>
+  <div class="stigma-grid">
+    <div class="stigma-card">
+      <div class="stigma-myth">Mito</div>
+      <div class="stigma-title">"TI é coisa de homem"</div>
+      <div class="stigma-truth">✦ A TI foi construída por mulheres</div>
+      <p class="stigma-body">Ada Lovelace escreveu o primeiro algoritmo da história. As primeiras programadoras do ENIAC eram todas mulheres. A área de computação nasceu nas mãos delas — e precisa delas hoje mais do que nunca.</p>
+    </div>
+    <div class="stigma-card">
+      <div class="stigma-myth">Mito</div>
+      <div class="stigma-title">"Precisa ser boa em matemática"</div>
+      <div class="stigma-truth">✦ Precisa ser boa em resolver problemas</div>
+      <p class="stigma-body">TI é sobre criatividade, lógica e trabalho em equipe. Design, comunicação, gestão de projetos — há dezenas de áreas que não exigem cálculo avançado, mas exigem exatamente o que você já tem.</p>
+    </div>
+    <div class="stigma-card">
+      <div class="stigma-myth">Mito</div>
+      <div class="stigma-title">"É difícil demais para mim"</div>
+      <div class="stigma-truth">✦ Qualquer uma pode aprender</div>
+      <p class="stigma-body">Programação, design e IA são habilidades aprendidas — não talentos inatos. Com dedicação e as ferramentas certas (como o ELAS-&lt;TIC&gt;!), qualquer menina pode dominar o universo digital.</p>
+    </div>
+    <div class="stigma-card">
+      <div class="stigma-myth">Mito</div>
+      <div class="stigma-title">"Não vou me encaixar nesse ambiente"</div>
+      <div class="stigma-truth">✦ Diversidade é o futuro da TI</div>
+      <p class="stigma-body">Empresas de tecnologia ao redor do mundo buscam ativamente diversidade. Times diversos criam produtos melhores. Sua perspectiva única como mulher é um diferencial, não um obstáculo.</p>
+    </div>
+    <div class="stigma-card">
+      <div class="stigma-myth">Mito</div>
+      <div class="stigma-title">"Os salários são altos, mas não para mim"</div>
+      <div class="stigma-truth">✦ TI paga bem — para todas</div>
+      <p class="stigma-body">A área de tecnologia é uma das que melhor remunera no Brasil e no mundo. Com a qualificação certa, mulheres em TI alcançam cargos e salários competitivos em qualquer lugar do planeta.</p>
+    </div>
+    <div class="stigma-card">
+      <div class="stigma-myth">Mito</div>
+      <div class="stigma-title">"Só serve pra trabalhar numa empresa de tecnologia"</div>
+      <div class="stigma-truth">✦ TI está em todo lugar</div>
+      <p class="stigma-body">Saúde, moda, agronegócio, arte, educação — toda área usa tecnologia. Ser profissional de TI é ter um superpoder que você pode aplicar em qualquer setor que te apaixone.</p>
+    </div>
+  </div>
+</section>
+ 
+<!-- MULHERES IMPORTANTES 
+<section class="section section--white" id="mulheres">
+  <span class="section-tag">Inspire-se</span>
+  <h2 class="section-title">Mulheres que <span>mudaram a TI</span></h2>
+  <p class="section-body" style="margin-bottom:0">Elas existiram, existem e provam que a tecnologia sempre foi delas também.</p>
+ 
+  <div class="women-carousel-wrap">
+    <div class="women-carousel" id="womenCarousel">
+ 
+      <div class="woman-card">
+        <div class="woman-banner" style="background:linear-gradient(135deg,#3d0040,#e91e8c)">🧮</div>
+        <div class="woman-body">
+          <div class="woman-name">Ada Lovelace</div>
+          <div class="woman-area">Matemática · Escritora · 1815–1852</div>
+          <p class="woman-desc">Considerada a <strong>primeira programadora da história</strong>, Ada escreveu o primeiro algoritmo destinado a ser processado por uma máquina — 100 anos antes dos computadores existirem.</p>
+          <div class="woman-quote">"A imaginação é a faculdade descobridora — ela é o que penetra nos mundos invisíveis ao nosso redor."</div>
+        </div>
+      </div>
+ 
+      <div class="woman-card">
+        <div class="woman-banner" style="background:linear-gradient(135deg,#1a3a6e,#0066cc)">⚓</div>
+        <div class="woman-body">
+          <div class="woman-name">Grace Hopper</div>
+          <div class="woman-area">Almirante · Cientista da Computação · 1906–1992</div>
+          <p class="woman-desc">Inventou o <strong>primeiro compilador</strong> e popularizou a ideia de linguagens de programação legíveis por humanos. Criou COBOL, ainda usado em bancos hoje.</p>
+          <div class="woman-quote">"É mais fácil pedir perdão do que pedir permissão."</div>
+        </div>
+      </div>
+ 
+      <div class="woman-card">
+        <div class="woman-banner" style="background:linear-gradient(135deg,#003366,#1a6644)">🚀</div>
+        <div class="woman-body">
+          <div class="woman-name">Katherine Johnson</div>
+          <div class="woman-area">Matemática · NASA · 1918–2020</div>
+          <p class="woman-desc">Seus cálculos foram <strong>essenciais para a corrida espacial</strong>. John Glenn insistiu em que Katherine verificasse manualmente os dados do computador antes de sua missão orbital.</p>
+          <div class="woman-quote">"Conta o que você sabe, não quem você é."</div>
+        </div>
+      </div>
+ 
+      <div class="woman-card">
+        <div class="woman-banner" style="background:linear-gradient(135deg,#c01070,#ff6b35)">🌐</div>
+        <div class="woman-body">
+          <div class="woman-name">Radia Perlman</div>
+          <div class="woman-area">Engenheira de Redes · Inventora · 1951–</div>
+          <p class="woman-desc">Apelidada de <strong>"Mãe da Internet"</strong>, criou o protocolo STP que torna as redes modernas possíveis. Detém mais de 100 patentes em redes de computadores.</p>
+          <div class="woman-quote">"Não gosto do título 'mãe da internet' — prefiro ser reconhecida pelo trabalho técnico."</div>
+        </div>
+      </div>
+ 
+      <div class="woman-card">
+        <div class="woman-banner" style="background:linear-gradient(135deg,#4a0080,#cc44aa)">📡</div>
+        <div class="woman-body">
+          <div class="woman-name">Hedy Lamarr</div>
+          <div class="woman-area">Atriz · Inventora · 1914–2000</div>
+          <p class="woman-desc">Atriz de Hollywood que inventou uma tecnologia de comunicação de salto de frequência que se tornou a <strong>base do Wi-Fi, GPS e Bluetooth</strong> modernos.</p>
+          <div class="woman-quote">"Qualquer garota pode ser glamourosa. Só precisa ficar parada e parecer estúpida."</div>
+        </div>
+      </div>
+ 
+      <div class="woman-card">
+        <div class="woman-banner" style="background:linear-gradient(135deg,#1a6644,#0099cc)">🖥️</div>
+        <div class="woman-body">
+          <div class="woman-name">Frances Allen</div>
+          <div class="woman-area">Cientista da Computação · IBM · 1932–2020</div>
+          <p class="woman-desc">Primeira mulher a ganhar o <strong>Prêmio Turing</strong> (o "Nobel da Computação"). Pioneira em otimização de compiladores e programação paralela.</p>
+          <div class="woman-quote">"Resolva o problema real, não o que você acha que é o problema."</div>
+        </div>
+      </div>
+ 
+      <div class="woman-card">
+        <div class="woman-banner" style="background:linear-gradient(135deg,#330066,#9933cc)">🤖</div>
+        <div class="woman-body">
+          <div class="woman-name">Fei-Fei Li</div>
+          <div class="woman-area">IA · Stanford · Google · 1976–</div>
+          <p class="woman-desc">Criou o <strong>ImageNet</strong>, dataset que revolucionou o deep learning e a visão computacional. Foi VP no Google Cloud e é co-diretora do Instituto HAI de Stanford.</p>
+          <div class="woman-quote">"IA não é mágica. É trabalho, dados, e pessoas diversas construindo juntas."</div>
+        </div>
+      </div>
+ 
+      <div class="woman-card">
+        <div class="woman-banner" style="background:linear-gradient(135deg,#8B1a1a,#e91e8c)">🐍</div>
+        <div class="woman-body">
+          <div class="woman-name">Guido + Naomi (Python)</div>
+          <div class="woman-area">Brasileira na programação · Séc. XXI</div>
+          <p class="woman-desc">Hoje, <strong>mulheres como Naomi Ceder</strong> lideram a comunidade Python global. Ela foi presidente da Python Software Foundation e é referência em diversidade na tecnologia aberta.</p>
+          <div class="woman-quote">"Código aberto precisa de pessoas abertas — e isso inclui todas as identidades."</div>
+        </div>
+      </div>
+ 
+    </div>
+  </div>
+ 
+  <div class="carousel-nav">
+    <button class="carousel-btn" id="prevWoman">‹</button>
+    <div class="carousel-dots" id="womenDots"></div>
+    <button class="carousel-btn" id="nextWoman">›</button>
+  </div>
+</section>-->
+ 
+<!-- POR QUE ESCOLHER TI -->
+<section class="section section--pale">
+  <div class="why-grid">
+    <div>
+      <span class="section-tag">Por que escolher TI?</span>
+      <h2 class="section-title">O futuro é<br><span>tecnológico</span> — e feminino</h2>
+      <div class="why-list">
+        <div class="why-item"><div class="why-icon"></div><div class="why-text"><h4>Melhor remuneração</h4><p>TI tem dos melhores salários do mercado, mesmo para quem está começando.</p></div></div>
+        <div class="why-item"><div class="why-icon"></div><div class="why-text"><h4>Trabalho remoto e global</h4><p>Trabalhe de qualquer lugar do mundo — inclusive de casa.</p></div></div>
+        <div class="why-item"><div class="why-icon"></div><div class="why-text"><h4>É criativa, não só técnica</h4><p>Design, UX, games, arte digital — criatividade é um superpoder em TI.</p></div></div>
+        <div class="why-item"><div class="why-icon"></div><div class="why-text"><h4>Mercado sempre em crescimento</h4><p>A demanda por profissionais de TI só aumenta. Nunca vai faltar oportunidade.</p></div></div>
+        <div class="why-item"><div class="why-icon"></div><div class="why-text"><h4>Comunidade e suporte</h4><p>Projetos como o ELAS-&lt;TIC&gt; existem para te apoiar desde o início.</p></div></div>
+      </div>
+    </div>
+    <div class="why-visual">
+      <div class="why-big">78M+</div>
+      <p style="color:rgba(255,255,255,0.8);font-size:0.9rem;margin-bottom:1.5rem">empregos em tecnologia serão criados globalmente até 2030 (Fórum Econômico Mundial)</p>
+      <div style="font-size:2.5rem;margin-bottom:1rem"></div>
+      <p style="color:rgba(255,255,255,0.75);font-size:0.85rem">Apenas <strong style="color:var(--amarelo)">28%</strong> são ocupados por mulheres hoje.<br>Isso precisa mudar — e começa com você.</p>
+    </div>
+  </div>
+</section>
+ 
+<!-- CTA BAND -->
+<div class="cta-band">
+  <h2>Pronta para escrever<br>sua história em TI?</h2>
+  <p>O ELAS-&lt;TIC&gt; 2026 é o seu ponto de partida. Inscrições gratuitas, agosto de 2026.</p>
+  <a href="inscricao.html" class="btn btn-white" style="position:relative">Fazer minha inscrição</a>
+</div>
+ 
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-links">
+    <a href="index.html">Início</a>
+    <a href="meninas-ti.html">Meninas na TI</a>
+    <a href="equipe.html">Equipe</a>
+    <a href="inscricao.html">Inscrição</a>
+  </div>
+  <p><strong>ELAS-&lt;TIC&gt; 2026</strong> · UNICAMP · COTIL</p>
+  <p style="margin-top:0.4rem;opacity:0.5;font-size:0.78rem">Desenvolvido com 💜 pelo time ELAS-&lt;TIC&gt;</p>
+</footer>
+ 
+<script>
+// Hamburger
+document.getElementById('hamburger').addEventListener('click',()=>document.getElementById('navLinks').classList.toggle('open'));
+ 
+// Women Carousel
+const carousel = document.getElementById('womenCarousel');
+const cards = carousel.querySelectorAll('.woman-card');
+const dotsContainer = document.getElementById('womenDots');
+let current = 0;
+const visible = () => window.innerWidth < 600 ? 1 : window.innerWidth < 900 ? 2 : 3;
+ 
+// Build dots
+cards.forEach((_,i)=>{
+  const d = document.createElement('div');
+  d.className = 'c-dot' + (i===0?' active':'');
+  d.addEventListener('click',()=>goTo(i));
+  dotsContainer.appendChild(d);
+});
+ 
+function goTo(idx){
+  const v = visible();
+  const max = Math.max(0, cards.length - v);
+  current = Math.min(Math.max(0,idx), max);
+  const w = cards[0].offsetWidth + 24;
+  carousel.style.transform = `translateX(-${current * w}px)`;
+  document.querySelectorAll('.c-dot').forEach((d,i)=>d.classList.toggle('active',i===current));
+}
+ 
+document.getElementById('prevWoman').addEventListener('click',()=>goTo(current-1));
+document.getElementById('nextWoman').addEventListener('click',()=>goTo(current+1));
+window.addEventListener('resize',()=>goTo(current));
+</script>
+</body>
+</html>
+ 
