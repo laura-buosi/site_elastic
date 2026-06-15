@@ -222,6 +222,17 @@ body {
   color:rgba(255,255,255,0.65); font-size:0.85rem;
 }
 .footer strong { color:var(--rosa-claro); }
+.footer-logos {
+  display:flex; align-items:center; justify-content:center;
+  gap:1.8rem; margin-top:1.2rem;
+}
+.footer-logos img {
+  height:42px; width:auto; object-fit:contain;
+  filter:brightness(0) invert(1); opacity:0.85;
+}
+.footer-logos img.logo-unicamp {
+  height:64px;
+}
 .footer-links { display:flex; gap:1.5rem; justify-content:center; flex-wrap:wrap; margin-bottom:1rem; }
 .footer-links a { color:rgba(255,255,255,0.55); text-decoration:none; font-size:0.82rem; transition:color 0.2s; }
 .footer-links a:hover { color:var(--rosa-claro); }

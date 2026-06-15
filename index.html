@@ -11,7 +11,8 @@
  
 /* HERO */
 .hero {
-  min-height:100vh;
+  height:100vh;
+  height:100dvh;
   background:var(--grad-main);
   display:flex; flex-direction:column;
   align-items:center; justify-content:center;
@@ -136,10 +137,10 @@
  
 /* EVENTO CARDS */
 .evento-grid {
-  display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+  display:flex; flex-wrap:wrap; justify-content:center;
   gap:1.4rem; margin-top:2.8rem; position:relative; z-index:1;
 }
-.evento-card { text-align:center; }
+.evento-card { text-align:center; flex:1 1 230px; max-width:280px; }
 .evento-icon { font-size:2.8rem; margin-bottom:0.7rem; }
 .evento-card h3 {
   font-family:'MuseoModerno',sans-serif; color:#fff;
@@ -202,7 +203,7 @@
     <li><a href="index.html" class="active">Início</a></li>
     <li><a href="meninas-ti.html">Meninas no DS</a></li>
   </ul>
-  <a href="inscricao.html" class="nav-cta">Inscreva-se grátis</a>
+  <a href="inscricao.html" class="nav-cta">Quero participar</a>
   <button class="nav-hamburger" id="hamburger" aria-label="Menu">
     <span></span><span></span><span></span>
   </button>
@@ -214,14 +215,14 @@
   <div class="hero-badge">UNICAMP · COTIL · DEEDUC · Agosto 2026</div>
   <h1>ELAS-<span class="tag">&lt;TIC&gt;</span></h1>
   <div class="hero-year">2 0 2 6</div>
-  <p class="hero-sub">Um evento exclusivo para meninas até o 9º ano</p>
+  <p class="hero-sub">Um evento exclusivo para meninas do 9º ano ao Ensino Médio</p>
   <div class="hero-btns">
     <a href="inscricao.html" class="btn btn-white"> Quero participar</a>
-    <a href="meninas-ti.html" class="btn btn-outline-white">Mulheres no DS</a>
+    <a href="meninas-ti.html" class="btn btn-outline-white">Meninas no DS</a>
   </div>
   <div class="hero-stats">
     <div class="stat"><div class="stat-num">1 manhã</div><div class="stat-label">de imersão</div></div>
-    <div class="stat"><div class="stat-num">13/Ago</div><div class="stat-label">data do evento</div></div>
+    <div class="stat"><div class="stat-num">15/Ago</div><div class="stat-label">data do evento</div></div>
     <div class="stat"><div class="stat-num">3+</div><div class="stat-label">oficinas práticas</div></div>
     <div class="stat"><div class="stat-num">100%</div><div class="stat-label">gratuito</div></div>
   </div>
@@ -248,8 +249,8 @@
  
 <!-- EVENTO -->
 <section class="section section--dark" id="evento">
-  <span class="section-tag section-tag--light">O que vai rolar</span>
-  <h2 class="section-title section-title--light">Atividades do <span>evento</span></h2>
+  <span class="section-tag section-tag--light">Atividades do evento</span>
+  <h2 class="section-title section-title--light">O que vai<span> rolar</span>?</h2>
   <div class="evento-grid">
     <div class="card-glass evento-card"><div class="evento-icon"></div><h3>Oficina de Programação</h3><p>Crie seu primeiro programa com monitoras guiando cada passo.</p></div>
     <div class="card-glass evento-card"><div class="evento-icon"></div><h3>Oficina de Design Digital</h3><p>Interfaces, identidades visuais e UX/UI com ferramentas profissionais.</p></div>
@@ -266,7 +267,7 @@
   <h2 class="section-title">Como será a <span>programação?</span></h2>
   <div class="prog-list">
     <div class="prog-item"><div class="prog-time">08h00</div><div class="prog-info"><h4>Credenciamento e Recepção</h4><p>Retirada do crachá e material do evento</p></div><div class="prog-badge">Entrada</div></div>
-    <div class="prog-item"><div class="prog-time">08h30</div><div class="prog-info"><h4>Café de Boas-Vindas ☕</h4><p>Networking e apresentação do projeto ELAS-&lt;TIC&gt;</p></div><div class="prog-badge">Social</div></div>
+    <div class="prog-item"><div class="prog-time">08h30</div><div class="prog-info"><h4>Café de Boas-Vindas</h4><p>Networking e apresentação do projeto ELAS-&lt;TIC&gt;</p></div><div class="prog-badge">Social</div></div>
     <div class="prog-item"><div class="prog-time">09h00</div><div class="prog-info"><h4>Abertura Oficial + Palestra</h4><p>Apresentação do projeto e mulheres na TI</p></div><div class="prog-badge">Palestra</div></div>
     <div class="prog-item"><div class="prog-time">10h00</div><div class="prog-info"><h4>Oficinas Práticas — Rodízio</h4><p>Programação · Design · Inteligência Artificial</p></div><div class="prog-badge">Oficinas</div></div>
     <div class="prog-item"><div class="prog-time">12h00</div><div class="prog-info"><h4>Encerramento e Certificados</h4><p>Foto oficial, certificados e avaliação do evento</p></div><div class="prog-badge">Encerramento</div></div>
@@ -297,6 +298,10 @@
     <a href="meninas-ti.html">Meninas na TI</a>
   </div>
   <p><strong>ELAS-&lt;TIC&gt; 2026</strong> · UNICAMP · Colégio Técnico de Limeira – COTIL</p>
+  <div class="footer-logos">
+    <img src="img/logo-unicamp.png" alt="Logo UNICAMP" class="logo-unicamp">
+    <img src="img/logo-cotil.png" alt="Logo COTIL">
+  </div>
   <p style="margin-top:0.4rem;opacity:0.5;font-size:0.78rem">Desenvolvido com <span style="font-size:1.3em">♡</span> pelo time ELAS-&lt;TIC&gt;</p>
 </footer>
  

@@ -52,10 +52,11 @@
  
 /* STIGMA SECTION */
 .stigma-grid {
-  display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  display:flex; flex-wrap:wrap; justify-content:center;
   gap:1.5rem; margin-top:2.5rem;
 }
 .stigma-card {
+  flex:1 1 280px; max-width:340px;
   border-radius:var(--radius); padding:2rem 1.8rem;
   background:#fff; border-left:5px solid var(--rosa);
   box-shadow:var(--shadow-sm);
@@ -200,6 +201,41 @@
   .aluna-overlay { opacity:1; transform:translateY(0); background:linear-gradient(0deg, rgba(61,0,64,0.92) 0%, rgba(61,0,64,0.4) 70%, rgba(61,0,64,0.05) 100%); }
 }
 
+/* COMO ENTRAR NO COTIL - PASSO A PASSO */
+.steps-flow {
+  display:flex; flex-direction:column; align-items:center;
+  gap:0; margin-top:2.8rem; max-width:620px; margin-left:auto; margin-right:auto;
+}
+.step-flow-item {
+  background:#fff; border-radius:var(--radius); padding:1.6rem 2rem;
+  box-shadow:var(--shadow-sm); border-left:5px solid var(--rosa);
+  width:100%; text-align:center;
+}
+.step-flow-num {
+  display:inline-flex; align-items:center; justify-content:center;
+  width:36px; height:36px; border-radius:50%;
+  background:var(--grad-card); color:#fff;
+  font-family:'MuseoModerno',sans-serif; font-weight:800; font-size:1rem;
+  margin-bottom:0.7rem;
+}
+.step-flow-title {
+  font-family:'MuseoModerno',sans-serif; font-weight:800; font-size:1.05rem;
+  color:var(--roxo-escuro); margin-bottom:0.4rem;
+}
+.step-flow-desc { font-size:0.88rem; color:var(--texto-suave); line-height:1.6; }
+.step-flow-arrow {
+  font-size:1.6rem; color:var(--rosa); line-height:1;
+  margin:0.4rem 0;
+}
+
+/* CABEÇALHOS DE SEÇÃO CENTRALIZADOS */
+.section--head-center > .section-tag,
+.section--head-center > .section-title,
+.section--head-center > .section-subtitle,
+.section--head-center > .section-body {
+  text-align:center; margin-left:auto; margin-right:auto;
+}
+
 /* SUBTÍTULOS (texto de apoio abaixo do title) */
 .section-subtitle {
   font-family:'MuseoModerno',sans-serif;
@@ -211,11 +247,11 @@
 
 /* POR QUE O COTIL - DADOS */
 .cotil-stats {
-  display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  display:flex; flex-wrap:wrap; justify-content:center;
   gap:1.5rem; margin-top:2.8rem;
-  justify-content:center;
 }
 .cotil-stat-card {
+  flex:1 1 220px; max-width:280px;
   background:#fff; border-radius:var(--radius); padding:1.8rem 1.6rem;
   box-shadow:var(--shadow-sm); border-top:4px solid var(--rosa);
   text-align:center;
@@ -296,7 +332,7 @@
     <li><a href="index.html">Início</a></li>
     <li><a href="meninas-ti.html" class="active">Meninas no DS</a></li>
   </ul>
-  <a href="inscricao.html" class="nav-cta">Inscreva-se grátis</a>
+  <a href="inscricao.html" class="nav-cta">Quero participar</a>
   <button class="nav-hamburger" id="hamburger" aria-label="Menu">
     <span></span><span></span><span></span>
   </button>
@@ -307,7 +343,7 @@
   <div class="hero-badge" style="display:inline-block;background:rgba(255,255,255,0.13);border:1px solid rgba(255,255,255,0.28);color:#fff;padding:0.4rem 1.2rem;border-radius:50px;font-size:0.8rem;font-weight:600;letter-spacing:0.05em;margin-bottom:1.5rem">✦ Quebrando o estigma</div>
   <h1>Tecnologia<br>é <em>para elas</em></h1>
   <p>O curso de Desenvolvimento de Sistemas, não tem e nunca teve dono. Conheça as mulheres que moldaram o mundo digital e descubra por que o futuro da tecnologia é feminino.</p>
-  <a href="#mulheres" class="btn btn-white" style="margin:0 auto">Descobrir →</a>
+  <a href="#mulheres" id="descobrirBtn" class="btn btn-white" style="margin:0 auto">Descobrir →</a>
 </section>
 
 <!-- IMAGE TICKER -->
@@ -323,7 +359,7 @@
 </div>
 
 <!-- CARROSSEL: MULHERES QUE MUDARAM A TI -->
-<section class="section">
+<section class="section section--head-center" id="mulheres">
   <span class="section-tag">Inspire-se</span>
   <h2 class="section-title">Mulheres que <span>mudaram a TI</span></h2>
   <p class="section-body">Elas existiram, existem e provam que a tecnologia sempre foi delas também.</p>
@@ -410,7 +446,7 @@
 </section>
  
 <!-- QUEBRANDO O ESTIGMA -->
-<section class="section section--pale">
+<section class="section section--pale section--head-center">
   <span class="section-tag">Desmistificando</span>
   <h2 class="section-title">Mitos x <span>Realidade</span></h2>
   <p class="section-body">Chegou a hora de acabar de vez com os mitos que afastam meninas da tecnologia.</p>
@@ -606,7 +642,7 @@
 </section>
 
 <!-- POR QUE FAZER DS NO COTIL -->
-<section class="section section--white">
+<section class="section section--white section--head-center">
   <span class="section-tag">Por que o COTIL?</span>
   <h2 class="section-subtitle" style="font-size:1.5rem">Um dos <span>melhores lugares</span> para começar sua carreira em tecnologia</h2>
   <p class="section-body">Além da tradição, o COTIL oferece estrutura, flexibilidade e oportunidades reais para quem quer entrar na área de TI.</p>
@@ -655,7 +691,46 @@
     </div>
   </div>
 </section>
- 
+
+<!-- COMO ENTRAR NO COTIL -->
+<section class="section section--pale section--head-center">
+  <span class="section-tag">Passo a passo</span>
+  <h2 class="section-title">Como entrar no <span>COTIL</span>?</h2>
+  <p class="section-body">Confira o caminho para concorrer a uma vaga no curso de Desenvolvimento de Sistemas.</p>
+
+  <div class="steps-flow">
+    <div class="step-flow-item">
+      <div class="step-flow-num">1</div>
+      <div class="step-flow-title">Acompanhe as redes e o site do COTIL</div>
+      <div class="step-flow-desc">Siga as redes sociais e fique de olho no site do colégio para saber quando começa o período de inscrições do processo seletivo.</div>
+    </div>
+    <div class="step-flow-arrow">↓</div>
+    <div class="step-flow-item">
+      <div class="step-flow-num">2</div>
+      <div class="step-flow-title">Faça sua inscrição dentro do prazo</div>
+      <div class="step-flow-desc">Preencha o formulário de inscrição do processo seletivo, dentro do período divulgado no edital, com os documentos solicitados.</div>
+    </div>
+    <div class="step-flow-arrow">↓</div>
+    <div class="step-flow-item">
+      <div class="step-flow-num">3</div>
+      <div class="step-flow-title">Estude o conteúdo do edital</div>
+      <div class="step-flow-desc">Leia o edital com atenção e estude as matérias e o conteúdo programático indicados para a prova.</div>
+    </div>
+    <div class="step-flow-arrow">↓</div>
+    <div class="step-flow-item">
+      <div class="step-flow-num">4</div>
+      <div class="step-flow-title">Pratique com videoaulas e exercícios</div>
+      <div class="step-flow-desc">Use videoaulas, listas de exercícios e simulados como boas práticas de estudo para se preparar para a prova.</div>
+    </div>
+    <div class="step-flow-arrow">↓</div>
+    <div class="step-flow-item">
+      <div class="step-flow-num">5</div>
+      <div class="step-flow-title">Faça a prova e acompanhe o resultado</div>
+      <div class="step-flow-desc">Compareça no dia e horário marcados e acompanhe a divulgação do resultado e da chamada para matrícula.</div>
+    </div>
+  </div>
+</section>
+
 <!-- CTA BAND -->
 <div class="cta-band">
   <h2>Pronta para escrever<br>sua história em TI?</h2>
@@ -670,6 +745,10 @@
     <a href="meninas-ti.html">Meninas na TI</a>
   </div>
   <p><strong>ELAS-&lt;TIC&gt; 2026</strong> · UNICAMP · COTIL</p>
+  <div class="footer-logos">
+    <img src="img/logo-unicamp.png" alt="Logo UNICAMP" class="logo-unicamp">
+    <img src="img/logo-cotil.png" alt="Logo COTIL">
+  </div>
   <p style="margin-top:0.4rem;opacity:0.5;font-size:0.78rem">Desenvolvido com <span style="font-size:1.3em">♡</span> pelo time ELAS-&lt;TIC&gt;</p>
 </footer>
 
@@ -677,7 +756,7 @@
 <script>
 // Hamburger
 document.getElementById('hamburger').addEventListener('click',()=>document.getElementById('navLinks').classList.toggle('open'));
- 
+
 // Women Carousel
 const carousel = document.getElementById('womenCarousel');
 const cards = carousel.querySelectorAll('.woman-card');
