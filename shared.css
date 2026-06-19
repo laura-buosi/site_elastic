@@ -358,4 +358,8 @@ body {
   .form-divider { grid-column:1; }
   .btn-submit { grid-column:1; }
 }
+/* esconde o botão CTA da navbar no mobile — o menu hambúrguer já dá acesso */
+@media (max-width:540px) {
+  .nav-cta { display:none; }
+}
  

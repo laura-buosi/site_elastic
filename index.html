@@ -51,7 +51,7 @@
 .hero-sub {
   font-size:clamp(1rem,1.8vw,1.15rem);
   color:rgba(255,255,255,0.85);
-  max-width:520px; line-height:1.7;
+  max-width:760px; line-height:1.7;
   margin:0 auto 2.5rem;
 }
 .hero-btns { display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; }
@@ -161,7 +161,7 @@
 .prog-item:hover { border-color:var(--rosa); box-shadow:var(--shadow-sm); }
 .prog-time { font-family:'MuseoModerno',sans-serif; font-size:1rem; font-weight:700; color:var(--rosa); }
 .prog-info h4 { font-weight:600; font-size:0.95rem; color:var(--roxo-escuro); }
-.prog-info p { font-size:0.82rem; color:#999; margin-top:0.2rem; }
+.prog-info p { font-size:0.82rem; color:var(--texto-suave); margin-top:0.2rem; }
 .prog-badge {
   background:var(--grad-card); color:#fff;
   padding:0.28rem 0.85rem; border-radius:50px;
@@ -191,6 +191,16 @@
   .prog-item { grid-template-columns:70px 1fr; }
   .prog-badge { display:none; }
   .section { padding:5rem 5vw; }
+  .sobre-box { padding:2rem 1.6rem; }
+}
+@media(max-width:480px){
+  .hero-badge { display:none; }
+  .hero { padding:90px 5vw 60px; }
+  .hero-stats { gap:1.5rem; margin-top:2rem; }
+  .hero-sub { font-size:0.97rem; }
+  .sobre-box { padding:1.6rem 1.2rem; }
+  .pill { padding:0.7rem 1rem; }
+  .pill-text { font-size:0.82rem; }
 }
 </style>
 </head>
@@ -203,7 +213,7 @@
     <li><a href="index.html" class="active">Início</a></li>
     <li><a href="meninas-ti.html">Meninas no DS</a></li>
   </ul>
-  <a href="inscricao.html" class="nav-cta">Quero participar</a>
+  <a href="https://docs.google.com/forms/d/e/1FAIpQLSfg4KvIrDyqPQtukTfYqi7aDrI4TwfdcUrZkWkQHGhs6Rtmtw/viewform?usp=publish-editor" class="nav-cta">Quero participar</a>
   <button class="nav-hamburger" id="hamburger" aria-label="Menu">
     <span></span><span></span><span></span>
   </button>
@@ -212,12 +222,11 @@
 <!-- HERO -->
 <section class="hero">
   <div class="hero-dots"></div><div class="hero-glow"></div>
-  <div class="hero-badge">UNICAMP · COTIL · DEEDUC · Agosto 2026</div>
   <h1>ELAS-<span class="tag">&lt;TIC&gt;</span></h1>
   <div class="hero-year">2 0 2 6</div>
-  <p class="hero-sub">Um evento exclusivo para meninas do 9º ano ao Ensino Médio</p>
+  <p class="hero-sub">Um evento de 4 horas dentro do COTIL-UNICAMP, com projetos práticos, palestras e (MUITO) networking. Confira abaixo!</p>
   <div class="hero-btns">
-    <a href="inscricao.html" class="btn btn-white"> Quero participar</a>
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSfg4KvIrDyqPQtukTfYqi7aDrI4TwfdcUrZkWkQHGhs6Rtmtw/viewform?usp=publish-editor" class="btn btn-white"> Quero participar</a>
     <a href="meninas-ti.html" class="btn btn-outline-white">Meninas no DS</a>
   </div>
   <div class="hero-stats">
@@ -233,16 +242,16 @@
   <!-- TODO: salvar a foto enviada como img/cards/sobre-bg.jpg -->
   <div class="sobre-bg" id="sobreBg"></div>
   <div class="sobre-box">
-    <span class="section-tag">O projeto</span>
+    <span class="section-tag">O evento</span>
     <h2 class="section-title">O que é o<br><span>ELAS-&lt;TIC&gt;?</span></h2>
     <p class="section-body">
       Uma iniciativa do Departamento de Computação do <strong>COTIL/UNICAMP</strong>, com apoio da PROEEC, dedicada a incentivar a profissionalização de meninas e mulheres na área de TIC. Em 2026, queremos mostrar para cada participante que o mundo da tecnologia também é <strong>seu</strong>.
     </p>
     <div class="pills">
-      <div class="pill"><div class="pill-icon"></div><div class="pill-text">Oficinas práticas com profissionais da área</div></div>
-      <div class="pill"><div class="pill-icon"></div><div class="pill-text">Café de boas-vindas e networking</div></div>
-      <div class="pill"><div class="pill-icon"></div><div class="pill-text">Certificado de participação UNICAMP/COTIL</div></div>
-      <div class="pill"><div class="pill-icon"></div><div class="pill-text">Contato com monitoras, docentes e profissionais</div></div>
+      <div class="pill"><div class="pill-icon"></div><div class="pill-text">Mostrar que tecnologia é um espaço de todas</div></div>
+      <div class="pill"><div class="pill-icon"></div><div class="pill-text">Inspirar meninas a escolherem carreiras em TIC</div></div>
+      <div class="pill"><div class="pill-icon"></div><div class="pill-text">Aproximar alunas de referências femininas reais na área</div></div>
+      <div class="pill"><div class="pill-icon"></div><div class="pill-text">Apresentar o curso de DS do COTIL como um caminho possível</div></div>
     </div>
   </div>
 </section>
@@ -252,11 +261,11 @@
   <span class="section-tag section-tag--light">Atividades do evento</span>
   <h2 class="section-title section-title--light">O que vai<span> rolar</span>?</h2>
   <div class="evento-grid">
-    <div class="card-glass evento-card"><div class="evento-icon"></div><h3>Oficina de Programação</h3><p>Crie seu primeiro programa com monitoras guiando cada passo.</p></div>
-    <div class="card-glass evento-card"><div class="evento-icon"></div><h3>Oficina de Design Digital</h3><p>Interfaces, identidades visuais e UX/UI com ferramentas profissionais.</p></div>
-    <div class="card-glass evento-card"><div class="evento-icon"></div><h3>Oficina de Inteligência Artificial</h3><p>Explore IA, machine learning e as carreiras do futuro.</p></div>
+    <div class="card-glass evento-card"><div class="evento-icon"></div><h3>Oficinas de Programação</h3><p>Crie seu primeiro programa com monitoras guiando cada passo.</p></div>
+    <div class="card-glass evento-card"><div class="evento-icon"></div><h3>Roda de Conversa</h3><p>Trocar experiências, tirar dúvidas e ouvir histórias de quem já está na área de tecnologia.</p></div>
+    <div class="card-glass evento-card"><div class="evento-icon"></div><h3>Palestra COTIL</h3><p>Conheça de perto o curso de Desenvolvimento de Sistemas do COTIL.</p></div>
     <div class="card-glass evento-card"><div class="evento-icon"></div><h3>Café de Boas-Vindas</h3><p>Acolhimento, networking e apresentação antes das atividades.</p></div>
-    <div class="card-glass evento-card"><div class="evento-icon"></div><h3>Palestras Inspiradoras</h3><p>Mulheres em TI compartilhando histórias e conquistas reais.</p></div>
+    <div class="card-glass evento-card"><div class="evento-icon"></div><h3>Palestras de líderes da TIC</h3><p>Mulheres em TI compartilhando histórias e conquistas reais.</p></div>
     <div class="card-glass evento-card"><div class="evento-icon"></div><h3>Entrega de Certificados</h3><p>Certificado oficial COTIL/UNICAMP para todas as participantes.</p></div>
   </div>
 </section>
@@ -267,10 +276,11 @@
   <h2 class="section-title">Como será a <span>programação?</span></h2>
   <div class="prog-list">
     <div class="prog-item"><div class="prog-time">08h00</div><div class="prog-info"><h4>Credenciamento e Recepção</h4><p>Retirada do crachá e material do evento</p></div><div class="prog-badge">Entrada</div></div>
-    <div class="prog-item"><div class="prog-time">08h30</div><div class="prog-info"><h4>Café de Boas-Vindas</h4><p>Networking e apresentação do projeto ELAS-&lt;TIC&gt;</p></div><div class="prog-badge">Social</div></div>
-    <div class="prog-item"><div class="prog-time">09h00</div><div class="prog-info"><h4>Abertura Oficial + Palestra</h4><p>Apresentação do projeto e mulheres na TI</p></div><div class="prog-badge">Palestra</div></div>
-    <div class="prog-item"><div class="prog-time">10h00</div><div class="prog-info"><h4>Oficinas Práticas — Rodízio</h4><p>Programação · Design · Inteligência Artificial</p></div><div class="prog-badge">Oficinas</div></div>
-    <div class="prog-item"><div class="prog-time">12h00</div><div class="prog-info"><h4>Encerramento e Certificados</h4><p>Foto oficial, certificados e avaliação do evento</p></div><div class="prog-badge">Encerramento</div></div>
+    <div class="prog-item"><div class="prog-time">08h30</div><div class="prog-info"><h4>Oficinas Práticas — Rodízio</h4><p>3 salas de oficinas de programação de computadores simuntâneas </p></div><div class="prog-badge">Oficinas</div></div>
+    <div class="prog-item"><div class="prog-time">09h45</div><div class="prog-info"><h4>Palestra COTIL</h4><p>Sobre os Cursos Técnicos e o processo seletivo do COTIL.</p></div><div class="prog-badge">Palestra</div></div>
+    <div class="prog-item"><div class="prog-time">10h30</div><div class="prog-info"><h4>Coffe Break</h4><p>Networking e integração com alunas, professoras do curso de DS e mulheres referências na TI</p></div><div class="prog-badge">Social</div></div>
+    <div class="prog-item"><div class="prog-time">11h00</div><div class="prog-info"><h4>Palestras e Roda de Conversa</h4><p>Com mulheres profissionais e líderes na área da Tecnologia da Informação</p></div><div class="prog-badge">Palestra</div></div>
+    <div class="prog-item"><div class="prog-time">12h30</div><div class="prog-info"><h4>Encerramento e Certificados</h4><p>Foto oficial, certificados e avaliação do evento</p></div><div class="prog-badge">Encerramento</div></div>
   </div>
 </section>
  

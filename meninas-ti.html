@@ -129,76 +129,43 @@
 }
 .c-dot.active { background:var(--rosa); width:20px; border-radius:4px; }
  
-/* EX-ALUNAS GRID (bento) */
-.alunas-grid {
-  display:grid;
-  grid-template-columns: repeat(5,1fr);
-  grid-template-rows: repeat(2,1fr);
-  grid-template-areas:
-    "a a b b c"
-    "a a d e e";
-  gap:1.2rem;
-  width:100%; height:70vh;
-  margin-top:2.8rem;
+/* CARTA EX-ALUNA */
+.carta-layout { margin-top:3rem; }
+.carta-texto {
+  background:#fff; border-radius:var(--radius);
+  padding:2.8rem 3rem; box-shadow:var(--shadow-sm);
+  border-left:4px solid var(--rosa);
+  overflow:hidden;
 }
-.aluna-card {
-  position:relative; border-radius:var(--radius);
-  overflow:hidden; background:var(--grad-card);
-  box-shadow:var(--shadow-sm);
+.carta-foto {
+  float:right; margin:0 0 1.8rem 2.5rem;
+  border-radius:var(--radius); overflow:hidden;
+  box-shadow:var(--shadow-sm); max-width:380px;
 }
-.aluna-card:nth-child(1) { grid-area:a; }
-.aluna-card:nth-child(2) { grid-area:b; }
-.aluna-card:nth-child(3) { grid-area:c; }
-.aluna-card:nth-child(4) { grid-area:d; }
-.aluna-card:nth-child(5) { grid-area:e; }
-.aluna-photo {
-  position:absolute; inset:0; width:100%; height:100%;
-  object-fit:cover; display:block; transition:transform 0.4s ease;
+.carta-foto img {
+  display:block; width:100%; height:auto;
 }
-.aluna-card:hover .aluna-photo { transform:scale(1.06); }
-.aluna-overlay {
-  position:absolute; inset:0; display:flex; flex-direction:column; justify-content:flex-end;
-  padding:1.4rem;
-  background:linear-gradient(0deg, rgba(61,0,64,0.95) 0%, rgba(61,0,64,0.55) 50%, rgba(61,0,64,0.05) 100%);
-  opacity:0; transform:translateY(12px);
-  transition:opacity 0.3s ease, transform 0.3s ease;
+.carta-titulo {
+  font-family:'MuseoModerno',sans-serif; font-size:1.35rem; font-weight:700;
+  color:var(--roxo-escuro); line-height:1.35; text-transform:uppercase;
+  letter-spacing:0.02em; padding-bottom:1rem; margin-bottom:1.2rem;
+  border-bottom:2px solid var(--rosa);
 }
-.aluna-card:hover .aluna-overlay, .aluna-card:focus-within .aluna-overlay { opacity:1; transform:translateY(0); }
-.aluna-name {
-  font-family:'MuseoModerno',sans-serif; font-weight:800; color:#fff;
-  font-size:1.05rem; margin-bottom:0.3rem;
+.carta-corpo p {
+  font-size:0.95rem; line-height:1.75; color:#333; margin-bottom:0.9rem;
 }
-.aluna-turma {
-  font-size:0.7rem; font-weight:700; letter-spacing:0.08em;
-  text-transform:uppercase; color:var(--amarelo); margin-bottom:0.5rem;
+.carta-corpo p:last-child { margin-bottom:0; }
+.carta-corpo em { font-style:italic; color:var(--roxo-escuro); }
+.carta-assinatura {
+  font-family:'MuseoModerno',sans-serif; font-size:0.82rem; font-weight:600;
+  letter-spacing:0.06em; text-transform:uppercase; color:var(--rosa);
+  border-top:1px solid rgba(0,0,0,0.1); padding-top:1rem; margin-top:1.4rem;
+  clear:both;
 }
-.aluna-desc { color:rgba(255,255,255,0.85); font-size:0.82rem; line-height:1.55; }
-
-@media(max-width:900px){
-  .alunas-grid {
-    grid-template-columns:1fr 1fr;
-    grid-template-rows:repeat(5,180px);
-    grid-template-areas:
-      "a a"
-      "b c"
-      "d e"
-      "d e"
-      "d e";
-    height:auto;
-  }
-}
-@media(max-width:560px){
-  .alunas-grid {
-    grid-template-columns:1fr;
-    grid-template-rows:repeat(5,220px);
-    grid-template-areas:
-      "a"
-      "b"
-      "c"
-      "d"
-      "e";
-  }
-  .aluna-overlay { opacity:1; transform:translateY(0); background:linear-gradient(0deg, rgba(61,0,64,0.92) 0%, rgba(61,0,64,0.4) 70%, rgba(61,0,64,0.05) 100%); }
+@media(max-width:640px){
+  .carta-foto { float:none; margin:0 0 1.8rem 0; max-width:100%; }
+  .carta-texto { padding:1.8rem 1.5rem; }
+  .carta-titulo { font-size:1.1rem; }
 }
 
 /* COMO ENTRAR NO COTIL - PASSO A PASSO */
@@ -292,24 +259,27 @@
 
 /* CARROSSEL - MULHERES QUE MUDARAM A TI */
 .women-banner-carousel { margin-top:2.8rem; }
+.women-banner-carousel .carousel-item-inner {
+  height:70vh; display:flex; align-items:center; justify-content:center;
+  background:var(--grad-main); border-radius:var(--radius); overflow:hidden;
+}
 .women-banner-carousel .carousel-item img {
-  display:block; width:100%; height:60vh;
-  object-fit:cover; border-radius:var(--radius);
+  display:block; width:auto; height:100%; max-width:100%;
+  object-fit:contain;
 }
 .women-banner-carousel .carousel-caption {
-  left:8%; right:8%; bottom:2.2rem;
+  left:8%; right:8%; bottom:1.2rem;
   text-align:center;
-  background:rgba(61,0,64,0.55);
-  border-radius:var(--radius-sm);
-  padding:1.2rem 1.6rem;
-  backdrop-filter:blur(4px);
+  background:none;
+  border-radius:0;
+  padding:0;
+  backdrop-filter:none;
 }
 .women-banner-carousel .carousel-caption h5 {
-  font-family:'MuseoModerno',sans-serif; font-weight:800; font-size:1.4rem; color:#fff; margin-bottom:0.4rem;
+  font-family:'MuseoModerno',sans-serif; font-weight:800; font-size:1.4rem; color:#fff; margin-bottom:0;
+  text-shadow:0 2px 8px rgba(0,0,0,0.6);
 }
-.women-banner-carousel .carousel-caption p {
-  font-size:0.9rem; color:rgba(255,255,255,0.9); margin:0; line-height:1.5;
-}
+.women-banner-carousel .carousel-caption p { display:none; }
 .women-banner-carousel .carousel-indicators [data-bs-target] { background-color:var(--rosa); }
 .women-banner-carousel .carousel-control-prev-icon,
 .women-banner-carousel .carousel-control-next-icon { filter:none; background-color:rgba(233,30,140,0.8); border-radius:50%; padding:1.2rem; background-size:50%; }
@@ -317,9 +287,22 @@
 @media(max-width:700px){
   .woman-card { min-width:250px; }
   .section { padding:5rem 5vw; }
+  .women-banner-carousel .carousel-item-inner { height:50vh; }
+  .women-banner-carousel .carousel-item img { height:50vh; }
+  .step-flow-item { padding:1.2rem 1.4rem; }
+  .cotil-stat-card { flex:1 1 160px; }
+  .stigma-card { flex:1 1 100%; }
+}
+@media(max-width:480px){
+  .women-banner-carousel .carousel-item-inner { height:40vh; }
   .women-banner-carousel .carousel-item img { height:40vh; }
-  .women-banner-carousel .carousel-caption h5 { font-size:1.1rem; }
-  .women-banner-carousel .carousel-caption p { font-size:0.8rem; }
+  .page-hero { padding:100px 5vw 60px; }
+  .page-hero h1 { font-size:clamp(2rem,10vw,3.5rem); }
+  .stat-big-num { font-size:2rem; }
+  .carta-texto { padding:1.4rem 1.1rem; }
+  .carta-titulo { font-size:1rem; }
+  .steps-flow { margin-top:1.8rem; }
+  .step-flow-item { padding:1rem 1.1rem; }
 }
 </style>
 </head>
@@ -332,7 +315,7 @@
     <li><a href="index.html">Início</a></li>
     <li><a href="meninas-ti.html" class="active">Meninas no DS</a></li>
   </ul>
-  <a href="inscricao.html" class="nav-cta">Quero participar</a>
+  <a href="https://docs.google.com/forms/d/e/1FAIpQLSfg4KvIrDyqPQtukTfYqi7aDrI4TwfdcUrZkWkQHGhs6Rtmtw/viewform?usp=publish-editor" class="nav-cta">Quero participar</a>
   <button class="nav-hamburger" id="hamburger" aria-label="Menu">
     <span></span><span></span><span></span>
   </button>
@@ -374,63 +357,48 @@
       <button type="button" data-bs-target="#carouselMulheres" data-bs-slide-to="4" aria-label="Slide 5"></button>
       <button type="button" data-bs-target="#carouselMulheres" data-bs-slide-to="5" aria-label="Slide 6"></button>
       <button type="button" data-bs-target="#carouselMulheres" data-bs-slide-to="6" aria-label="Slide 7"></button>
-      <button type="button" data-bs-target="#carouselMulheres" data-bs-slide-to="7" aria-label="Slide 8"></button>
     </div>
     <div class="carousel-inner">
       <div class="carousel-item active">
-        <img src="img/mulheres/ada-lovelace.jpg" class="d-block w-100" alt="Ada Lovelace">
-        <div class="carousel-caption d-none d-md-block">
-          <h5>Ada Lovelace</h5>
-          <p>Matemática · Escritora · 1815–1852 — considerada a primeira programadora da história, escreveu o primeiro algoritmo destinado a uma máquina.</p>
+        <div class="carousel-item-inner">
+          <img src="img/mulheres/ada-lovelace.jpg" alt="Ada Lovelace">
+          <div class="carousel-caption d-none d-md-block"><h5>Ada Lovelace</h5></div>
         </div>
       </div>
       <div class="carousel-item">
-        <img src="img/mulheres/grace-hopper.jpg" class="d-block w-100" alt="Grace Hopper">
-        <div class="carousel-caption d-none d-md-block">
-          <h5>Grace Hopper</h5>
-          <p>Almirante · Cientista da Computação · 1906–1992 — inventou o primeiro compilador e criou o COBOL, ainda usado em bancos hoje.</p>
+        <div class="carousel-item-inner">
+          <img src="img/mulheres/grace-hopper.jpg" alt="Grace Hopper">
+          <div class="carousel-caption d-none d-md-block"><h5>Grace Hopper</h5></div>
         </div>
       </div>
       <div class="carousel-item">
-        <img src="img/mulheres/katherine-johnson.jpg" class="d-block w-100" alt="Katherine Johnson">
-        <div class="carousel-caption d-none d-md-block">
-          <h5>Katherine Johnson</h5>
-          <p>Matemática · NASA · 1918–2020 — seus cálculos foram essenciais para a corrida espacial e as missões orbitais da NASA.</p>
+        <div class="carousel-item-inner">
+          <img src="img/mulheres/katherine-johnson.jpg" alt="Katherine Johnson">
+          <div class="carousel-caption d-none d-md-block"><h5>Katherine Johnson</h5></div>
         </div>
       </div>
       <div class="carousel-item">
-        <img src="img/mulheres/radia-perlman.jpg" class="d-block w-100" alt="Radia Perlman">
-        <div class="carousel-caption d-none d-md-block">
-          <h5>Radia Perlman</h5>
-          <p>Engenheira de Redes · Inventora · 1951– — apelidada de "Mãe da Internet", criou o protocolo STP que torna as redes modernas possíveis.</p>
+        <div class="carousel-item-inner">
+          <img src="img/mulheres/radia-perlman.jpg" alt="Radia Perlman">
+          <div class="carousel-caption d-none d-md-block"><h5>Radia Perlman</h5></div>
         </div>
       </div>
       <div class="carousel-item">
-        <img src="img/mulheres/hedy-lamarr.jpg" class="d-block w-100" alt="Hedy Lamarr">
-        <div class="carousel-caption d-none d-md-block">
-          <h5>Hedy Lamarr</h5>
-          <p>Atriz · Inventora · 1914–2000 — sua tecnologia de salto de frequência se tornou a base do Wi-Fi, GPS e Bluetooth modernos.</p>
+        <div class="carousel-item-inner">
+          <img src="img/mulheres/hedy-lamarr.jpg" alt="Hedy Lamarr">
+          <div class="carousel-caption d-none d-md-block"><h5>Hedy Lamarr</h5></div>
         </div>
       </div>
       <div class="carousel-item">
-        <img src="img/mulheres/frances-allen.jpg" class="d-block w-100" alt="Frances Allen">
-        <div class="carousel-caption d-none d-md-block">
-          <h5>Frances Allen</h5>
-          <p>Cientista da Computação · IBM · 1932–2020 — primeira mulher a ganhar o Prêmio Turing, pioneira em compiladores e programação paralela.</p>
+        <div class="carousel-item-inner">
+          <img src="img/mulheres/frances-allen.jpg" alt="Frances Allen">
+          <div class="carousel-caption d-none d-md-block"><h5>Frances Allen</h5></div>
         </div>
       </div>
       <div class="carousel-item">
-        <img src="img/mulheres/fei-fei-li.jpg" class="d-block w-100" alt="Fei-Fei Li">
-        <div class="carousel-caption d-none d-md-block">
-          <h5>Fei-Fei Li</h5>
-          <p>IA · Stanford · Google · 1976– — criou o ImageNet, dataset que revolucionou o deep learning e a visão computacional.</p>
-        </div>
-      </div>
-      <div class="carousel-item">
-        <img src="img/mulheres/naomi-ceder.jpg" class="d-block w-100" alt="Naomi Ceder">
-        <div class="carousel-caption d-none d-md-block">
-          <h5>Naomi Ceder</h5>
-          <p>Comunidade Python · Séc. XXI — foi presidente da Python Software Foundation e é referência em diversidade na tecnologia aberta.</p>
+        <div class="carousel-item-inner">
+          <img src="img/mulheres/fei-fei-li.jpg" alt="Fei-Fei Li">
+          <div class="carousel-caption d-none d-md-block"><h5>Fei-Fei Li</h5></div>
         </div>
       </div>
     </div>
@@ -490,153 +458,34 @@
   </div>
 </section>
  
-<!-- MULHERES IMPORTANTES 
-<section class="section section--white" id="mulheres">
-  <span class="section-tag">Inspire-se</span>
-  <h2 class="section-title">Mulheres que <span>mudaram a TI</span></h2>
-  <p class="section-body" style="margin-bottom:0">Elas existiram, existem e provam que a tecnologia sempre foi delas também.</p>
- 
-  <div class="women-carousel-wrap">
-    <div class="women-carousel" id="womenCarousel">
- 
-      <div class="woman-card">
-        <div class="woman-banner" style="background:linear-gradient(135deg,#3d0040,#e91e8c)">🧮</div>
-        <div class="woman-body">
-          <div class="woman-name">Ada Lovelace</div>
-          <div class="woman-area">Matemática · Escritora · 1815–1852</div>
-          <p class="woman-desc">Considerada a <strong>primeira programadora da história</strong>, Ada escreveu o primeiro algoritmo destinado a ser processado por uma máquina — 100 anos antes dos computadores existirem.</p>
-          <div class="woman-quote">"A imaginação é a faculdade descobridora — ela é o que penetra nos mundos invisíveis ao nosso redor."</div>
-        </div>
-      </div>
- 
-      <div class="woman-card">
-        <div class="woman-banner" style="background:linear-gradient(135deg,#1a3a6e,#0066cc)">⚓</div>
-        <div class="woman-body">
-          <div class="woman-name">Grace Hopper</div>
-          <div class="woman-area">Almirante · Cientista da Computação · 1906–1992</div>
-          <p class="woman-desc">Inventou o <strong>primeiro compilador</strong> e popularizou a ideia de linguagens de programação legíveis por humanos. Criou COBOL, ainda usado em bancos hoje.</p>
-          <div class="woman-quote">"É mais fácil pedir perdão do que pedir permissão."</div>
-        </div>
-      </div>
- 
-      <div class="woman-card">
-        <div class="woman-banner" style="background:linear-gradient(135deg,#003366,#1a6644)">🚀</div>
-        <div class="woman-body">
-          <div class="woman-name">Katherine Johnson</div>
-          <div class="woman-area">Matemática · NASA · 1918–2020</div>
-          <p class="woman-desc">Seus cálculos foram <strong>essenciais para a corrida espacial</strong>. John Glenn insistiu em que Katherine verificasse manualmente os dados do computador antes de sua missão orbital.</p>
-          <div class="woman-quote">"Conta o que você sabe, não quem você é."</div>
-        </div>
-      </div>
- 
-      <div class="woman-card">
-        <div class="woman-banner" style="background:linear-gradient(135deg,#c01070,#ff6b35)">🌐</div>
-        <div class="woman-body">
-          <div class="woman-name">Radia Perlman</div>
-          <div class="woman-area">Engenheira de Redes · Inventora · 1951–</div>
-          <p class="woman-desc">Apelidada de <strong>"Mãe da Internet"</strong>, criou o protocolo STP que torna as redes modernas possíveis. Detém mais de 100 patentes em redes de computadores.</p>
-          <div class="woman-quote">"Não gosto do título 'mãe da internet' — prefiro ser reconhecida pelo trabalho técnico."</div>
-        </div>
-      </div>
- 
-      <div class="woman-card">
-        <div class="woman-banner" style="background:linear-gradient(135deg,#4a0080,#cc44aa)">📡</div>
-        <div class="woman-body">
-          <div class="woman-name">Hedy Lamarr</div>
-          <div class="woman-area">Atriz · Inventora · 1914–2000</div>
-          <p class="woman-desc">Atriz de Hollywood que inventou uma tecnologia de comunicação de salto de frequência que se tornou a <strong>base do Wi-Fi, GPS e Bluetooth</strong> modernos.</p>
-          <div class="woman-quote">"Qualquer garota pode ser glamourosa. Só precisa ficar parada e parecer estúpida."</div>
-        </div>
-      </div>
- 
-      <div class="woman-card">
-        <div class="woman-banner" style="background:linear-gradient(135deg,#1a6644,#0099cc)">🖥️</div>
-        <div class="woman-body">
-          <div class="woman-name">Frances Allen</div>
-          <div class="woman-area">Cientista da Computação · IBM · 1932–2020</div>
-          <p class="woman-desc">Primeira mulher a ganhar o <strong>Prêmio Turing</strong> (o "Nobel da Computação"). Pioneira em otimização de compiladores e programação paralela.</p>
-          <div class="woman-quote">"Resolva o problema real, não o que você acha que é o problema."</div>
-        </div>
-      </div>
- 
-      <div class="woman-card">
-        <div class="woman-banner" style="background:linear-gradient(135deg,#330066,#9933cc)">🤖</div>
-        <div class="woman-body">
-          <div class="woman-name">Fei-Fei Li</div>
-          <div class="woman-area">IA · Stanford · Google · 1976–</div>
-          <p class="woman-desc">Criou o <strong>ImageNet</strong>, dataset que revolucionou o deep learning e a visão computacional. Foi VP no Google Cloud e é co-diretora do Instituto HAI de Stanford.</p>
-          <div class="woman-quote">"IA não é mágica. É trabalho, dados, e pessoas diversas construindo juntas."</div>
-        </div>
-      </div>
- 
-      <div class="woman-card">
-        <div class="woman-banner" style="background:linear-gradient(135deg,#8B1a1a,#e91e8c)">🐍</div>
-        <div class="woman-body">
-          <div class="woman-name">Guido + Naomi (Python)</div>
-          <div class="woman-area">Brasileira na programação · Séc. XXI</div>
-          <p class="woman-desc">Hoje, <strong>mulheres como Naomi Ceder</strong> lideram a comunidade Python global. Ela foi presidente da Python Software Foundation e é referência em diversidade na tecnologia aberta.</p>
-          <div class="woman-quote">"Código aberto precisa de pessoas abertas — e isso inclui todas as identidades."</div>
-        </div>
-      </div>
- 
-    </div>
-  </div>
- 
-  <div class="carousel-nav">
-    <button class="carousel-btn" id="prevWoman">‹</button>
-    <div class="carousel-dots" id="womenDots"></div>
-    <button class="carousel-btn" id="nextWoman">›</button>
-  </div>
-</section>-->
- 
 <!-- TRAJETÓRIA / EX-ALUNAS -->
-<section class="section section--pale">
+<section class="section section--pale section--head-center" id="ex-alunas">
   <span class="section-tag">Tradição que forma profissionais</span>
   <h2 class="section-title">No COTIL, o curso de <span>Desenvolvimento de Sistemas</span></h2>
-  <p class="section-subtitle">existe há mais de 15 anos</p>
-  <p class="section-body">E já formou inúmeras alunas que hoje constroem carreiras de sucesso na tecnologia. Conheça um pouco da trajetória de quem já passou por aqui.</p>
+  <p class="section-subtitle">existe há mais de 34 anos</p>
+  <p class="section-body">E já formou inúmeras alunas que hoje constroem carreiras de sucesso na tecnologia. Leia o relato de uma ex-aluna:</p>
 
-  <!-- Grid bento: troque cada .aluna-photo por <img src="fotos/nome.jpg" class="aluna-photo" alt="Nome"> com a foto real -->
-  <div class="alunas-grid">
-    <div class="aluna-card">
-      <div class="aluna-photo" style="background:var(--grad-main);display:flex;align-items:center;justify-content:center;font-size:3.5rem">👩‍💻</div>
-      <div class="aluna-overlay">
-        <div class="aluna-name">Nome da Ex-aluna</div>
-        <div class="aluna-turma">Turma 20XX · Desenvolvedora Full Stack</div>
-        <p class="aluna-desc">Entrou no DS sem nunca ter programado e hoje atua em uma grande empresa de tecnologia, ajudando a construir sistemas usados por milhares de pessoas.</p>
+  <div class="carta-layout">
+    <div class="carta-texto">
+      <!-- foto flutuando à direita: texto envolve e continua abaixo quando a imagem acabar -->
+      <div class="carta-foto">
+        <img src="img/mulheres/ana.jpg" alt="Sueli, ex-aluna do DS COTIL" loading="lazy">
       </div>
-    </div>
-    <div class="aluna-card">
-      <div class="aluna-photo" style="background:var(--grad-card);display:flex;align-items:center;justify-content:center;font-size:2.8rem">👩‍🔬</div>
-      <div class="aluna-overlay">
-        <div class="aluna-name">Nome da Ex-aluna</div>
-        <div class="aluna-turma">Turma 20XX · Analista de Dados</div>
-        <p class="aluna-desc">Descobriu o gosto por dados ainda no técnico e hoje trabalha analisando informações que ajudam empresas a tomar decisões.</p>
+      <div class="carta-titulo">
+        " O técnico como ponto de partida<br>e não como um caminho único "
       </div>
-    </div>
-    <div class="aluna-card">
-      <div class="aluna-photo" style="background:linear-gradient(135deg,#ff6ec7,#ff6b35);display:flex;align-items:center;justify-content:center;font-size:2.8rem">🎨</div>
-      <div class="aluna-overlay">
-        <div class="aluna-name">Nome da Ex-aluna</div>
-        <div class="aluna-turma">Turma 20XX · UX/UI Designer</div>
-        <p class="aluna-desc">Uniu criatividade e tecnologia no DS e hoje projeta interfaces para aplicativos usados no dia a dia de milhares de usuárias.</p>
+      <div class="carta-corpo">
+        <p>Meu nome é <strong>Sueli</strong> e é uma alegria muito grande voltar ao COTIL para compartilhar um pouco da minha trajetória com vocês.</p>
+        <p>Estudei no COTIL entre os anos de <u>2008 e 2010</u>, cursando o Ensino Médio integrado ao Técnico em Desenvolvimento de Sistemas. Na época, eu já tinha contato com a área de tecnologia: havia feito curso profissionalizante em hardware e já trabalhava com informática, atuando na montagem de computadores em uma loja de vendas online.</p>
+        <p>Mesmo já estando inserida na área, foi no curso técnico que encontrei a oportunidade de aprofundar conhecimentos e ampliar minha visão sobre tecnologia. Meu objetivo naquele momento era aprender programação e entender melhor como os sistemas eram construídos.</p>
+        <p>Durante o curso, tive contato com conteúdos que se tornaram fundamentais para toda a minha carreira: <strong>lógica de programação, análise de sistemas, linguagens, inglês técnico, banco de dados, SQL</strong> e diversos conceitos que continuam presentes no meu dia a dia profissional.</p>
+        <p>Ainda no último ano do curso surgiu uma oportunidade como Analista de Suporte. Foi um momento importante, porque comecei a perceber que a área de tecnologia oferece caminhos muito mais amplos do que eu imaginava.</p>
+        <p>Hoje atuo como <strong>Analista de Qualidade e Automação</strong>, e olhando para trás percebo que um dos maiores diferenciais foi desenvolver uma visão ampla da tecnologia: entender diferentes áreas, conectar conhecimentos e manter uma base sólida para continuar aprendendo e evoluindo.</p>
+        <p>Se existe algo que eu gostaria de deixar como mensagem, é que o curso técnico pode ser uma grande porta de entrada para inúmeras possibilidades profissionais. Existem muitos caminhos: qualidade, infraestrutura, suporte, dados, automação, produto, análise de negócios, entre tantos outros.</p>
+        <p><em>Aproveitem esse período para aprender, testar, perguntar, explorar e construir repertório. Nem sempre sabemos exatamente onde vamos chegar — e tudo bem.</em></p>
+        <p>Foi exatamente assim que começou a minha história.</p>
       </div>
-    </div>
-    <div class="aluna-card">
-      <div class="aluna-photo" style="background:linear-gradient(135deg,#6a0572,#3d0040);display:flex;align-items:center;justify-content:center;font-size:2.8rem">👩‍🚀</div>
-      <div class="aluna-overlay">
-        <div class="aluna-name">Nome da Ex-aluna</div>
-        <div class="aluna-turma">Turma 20XX · Engenheira de Software</div>
-        <p class="aluna-desc">Hoje atua em projetos de grande porte e já passou por processos seletivos concorridos graças à base que teve no COTIL.</p>
-      </div>
-    </div>
-    <div class="aluna-card">
-      <div class="aluna-photo" style="background:linear-gradient(135deg,#e91e8c,#6a0572);display:flex;align-items:center;justify-content:center;font-size:2.8rem">🚀</div>
-      <div class="aluna-overlay">
-        <div class="aluna-name">Nome da Ex-aluna</div>
-        <div class="aluna-turma">Turma 20XX · Empreendedora</div>
-        <p class="aluna-desc">Criou sua própria startup de tecnologia logo após se formar, aplicando tudo o que aprendeu durante o curso técnico.</p>
-      </div>
+      <div class="carta-assinatura">— Sueli · Turma 2010 · Analista de Qualidade e Automação</div>
     </div>
   </div>
 </section>
@@ -650,83 +499,102 @@
   <!-- Troque cada src de .cotil-stat-icon img por uma imagem/ícone próprio (ex: img/icones/nome.png) -->
   <div class="cotil-stats">
     <div class="cotil-stat-card">
-      <img class="cotil-stat-photo" src="img/cards/diurno-noturno.jpg" alt="Alunos do curso de Desenvolvimento de Sistemas do COTIL em sala de informática" loading="lazy">
+      <div class="cotil-stat-icon">
+        <svg width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="28" cy="22" r="9" stroke="var(--rosa)" stroke-width="2.5" fill="none"/>
+          <path d="M28 13v-3M28 31v3M19 22h-3M40 22h3M21.6 15.6l-2.1-2.1M36.5 30.5l2.1 2.1M21.6 28.4l-2.1 2.1M36.5 13.5l2.1-2.1" stroke="var(--rosa)" stroke-width="2.5" stroke-linecap="round"/>
+          <path d="M14 42c0-4 3-7 14-7s14 3 14 7" stroke="var(--roxo-escuro)" stroke-width="2.5" stroke-linecap="round"/>
+          <path d="M10 48h36" stroke="var(--roxo-escuro)" stroke-width="2.5" stroke-linecap="round" opacity="0.4"/>
+          <circle cx="44" cy="36" r="7" fill="var(--roxo-escuro)" opacity="0.15"/>
+          <path d="M41 36c0-1.7 1.3-3 3-3s3 1.3 3 3-1.3 3-3 3-3-1.3-3-3z" fill="var(--roxo-escuro)" opacity="0.7"/>
+          <path d="M44 30v-3M44 45v-3M38 36h-2M50 36h-2" stroke="var(--roxo-escuro)" stroke-width="1.5" stroke-linecap="round" opacity="0.5"/>
+        </svg>
+      </div>
       <div class="cotil-stat-num">Diurno e Noturno</div>
       <div class="cotil-stat-label">O curso de Desenvolvimento de Sistemas é oferecido em dois turnos, dando flexibilidade para quem estuda, trabalha ou tem outras rotinas.</div>
     </div>
     <div class="cotil-stat-card">
-      <div class="cotil-stat-icon"><img src="img/icones/unicamp.png" alt="" loading="lazy"></div>
+      <div class="cotil-stat-icon">
+        <svg width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M28 8L6 20l22 12 22-12L28 8z" stroke="var(--rosa)" stroke-width="2.5" stroke-linejoin="round" fill="none"/>
+          <path d="M14 26v12c0 3.3 6.3 6 14 6s14-2.7 14-6V26" stroke="var(--roxo-escuro)" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+          <path d="M50 20v12" stroke="var(--roxo-escuro)" stroke-width="2.5" stroke-linecap="round"/>
+          <circle cx="50" cy="34" r="2.5" fill="var(--roxo-escuro)"/>
+        </svg>
+      </div>
       <div class="cotil-stat-num">Vinculado à UNICAMP</div>
       <div class="cotil-stat-label">O COTIL é um colégio técnico vinculado a uma das melhores universidades do país, com infraestrutura e qualidade de ensino reconhecidas.</div>
     </div>
     <div class="cotil-stat-card">
-      <div class="cotil-stat-icon"><img src="img/icones/laboratorios.png" alt="" loading="lazy"></div>
+      <div class="cotil-stat-icon">
+        <svg width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="8" y="14" width="40" height="26" rx="4" stroke="var(--rosa)" stroke-width="2.5" fill="none"/>
+          <path d="M18 40l-4 6h28l-4-6" stroke="var(--roxo-escuro)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          <path d="M20 40h16" stroke="var(--roxo-escuro)" stroke-width="2.5" stroke-linecap="round"/>
+          <path d="M16 24h8M16 29h16M16 20h4" stroke="var(--rosa)" stroke-width="2" stroke-linecap="round"/>
+          <rect x="32" y="20" width="10" height="13" rx="1.5" stroke="var(--roxo-escuro)" stroke-width="1.8" fill="none" opacity="0.5"/>
+        </svg>
+      </div>
       <div class="cotil-stat-num">Laboratórios equipados</div>
       <div class="cotil-stat-label">Aulas práticas em laboratórios de informática, com contato direto com programação, redes e desenvolvimento de sistemas desde o início do curso.</div>
     </div>
     <div class="cotil-stat-card">
-      <div class="cotil-stat-icon"><img src="img/icones/empregabilidade.png" alt="" loading="lazy"></div>
+      <div class="cotil-stat-icon">
+        <svg width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M10 42l10-12 8 6 10-14 8-8" stroke="var(--rosa)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M38 14h8v8" stroke="var(--rosa)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <rect x="8" y="44" width="8" height="6" rx="1.5" fill="var(--roxo-escuro)" opacity="0.5"/>
+          <rect x="20" y="38" width="8" height="12" rx="1.5" fill="var(--roxo-escuro)" opacity="0.5"/>
+          <rect x="32" y="32" width="8" height="18" rx="1.5" fill="var(--roxo-escuro)" opacity="0.5"/>
+          <rect x="44" y="24" width="8" height="26" rx="1.5" fill="var(--rosa)" opacity="0.7"/>
+        </svg>
+      </div>
       <div class="cotil-stat-num">Alta empregabilidade</div>
       <div class="cotil-stat-label">Grande parte das egressas do curso já ingressa no mercado de trabalho de TI ainda durante ou logo após o técnico.</div>
     </div>
     <div class="cotil-stat-card">
-      <div class="cotil-stat-icon"><img src="img/icones/gratuito.png" alt="" loading="lazy"></div>
+      <div class="cotil-stat-icon">
+        <svg width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="28" cy="28" r="18" stroke="var(--rosa)" stroke-width="2.5" fill="none"/>
+          <path d="M21 28l5 5 9-10" stroke="var(--rosa)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M28 10v4M28 42v4M10 28h4M42 28h4" stroke="var(--roxo-escuro)" stroke-width="2" stroke-linecap="round" opacity="0.4"/>
+        </svg>
+      </div>
       <div class="cotil-stat-num">Ensino público e gratuito</div>
       <div class="cotil-stat-label">Um curso técnico de qualidade, sem mensalidade, acessível para meninas de Limeira e região.</div>
     </div>
     <div class="cotil-stat-card">
-      <div class="cotil-stat-icon"><img src="img/icones/projetos.png" alt="" loading="lazy"></div>
+      <div class="cotil-stat-icon">
+        <svg width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M28 8c-6 8-12 10-16 10 0 14 6 22 16 28 10-6 16-14 16-28-4 0-10-2-16-10z" stroke="var(--rosa)" stroke-width="2.5" stroke-linejoin="round" fill="none"/>
+          <path d="M22 28l4 4 8-8" stroke="var(--rosa)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
       <div class="cotil-stat-num">Projetos</div>
       <div class="cotil-stat-label">Possibilidade de participar de projetos de iniciação científica (PIBIC), TCCs patrocinados por empresas e outras oportunidades de pesquisa e extensão.</div>
     </div>
     <div class="cotil-stat-card">
-      <div class="cotil-stat-icon"><img src="img/icones/bolsas.png" alt="" loading="lazy"></div>
+      <div class="cotil-stat-icon">
+        <svg width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M28 12c-8.8 0-16 7.2-16 16 0 5.8 3.1 10.9 7.8 13.7L18 48h20l-1.8-6.3C40.9 38.9 44 33.8 44 28c0-8.8-7.2-16-16-16z" stroke="var(--rosa)" stroke-width="2.5" fill="none" stroke-linejoin="round"/>
+          <path d="M22 48h12" stroke="var(--roxo-escuro)" stroke-width="2.5" stroke-linecap="round"/>
+          <path d="M24 28h.01M28 22v6l3 3" stroke="var(--rosa)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
       <div class="cotil-stat-num">Bolsas de Auxílio</div>
       <div class="cotil-stat-label">O colégio oferece bolsas de auxílio como BAS, BITA e BAT para apoiar as alunas durante o curso.</div>
     </div>
     <div class="cotil-stat-card">
-      <div class="cotil-stat-icon"><img src="img/icones/professores.png" alt="" loading="lazy"></div>
+      <div class="cotil-stat-icon">
+        <svg width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="28" cy="18" r="8" stroke="var(--rosa)" stroke-width="2.5" fill="none"/>
+          <path d="M14 44c0-7.7 6.3-14 14-14s14 6.3 14 14" stroke="var(--roxo-escuro)" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+          <path d="M36 12h10l-2 6 2 6H36" stroke="var(--rosa)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          <path d="M38 18h6" stroke="var(--rosa)" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </div>
       <div class="cotil-stat-num">Professores excelentes</div>
       <div class="cotil-stat-label">Corpo docente com anos de experiência e ótima formação, preparado para acompanhar de perto o aprendizado de cada aluna.</div>
-    </div>
-  </div>
-</section>
-
-<!-- COMO ENTRAR NO COTIL -->
-<section class="section section--pale section--head-center">
-  <span class="section-tag">Passo a passo</span>
-  <h2 class="section-title">Como entrar no <span>COTIL</span>?</h2>
-  <p class="section-body">Confira o caminho para concorrer a uma vaga no curso de Desenvolvimento de Sistemas.</p>
-
-  <div class="steps-flow">
-    <div class="step-flow-item">
-      <div class="step-flow-num">1</div>
-      <div class="step-flow-title">Acompanhe as redes e o site do COTIL</div>
-      <div class="step-flow-desc">Siga as redes sociais e fique de olho no site do colégio para saber quando começa o período de inscrições do processo seletivo.</div>
-    </div>
-    <div class="step-flow-arrow">↓</div>
-    <div class="step-flow-item">
-      <div class="step-flow-num">2</div>
-      <div class="step-flow-title">Faça sua inscrição dentro do prazo</div>
-      <div class="step-flow-desc">Preencha o formulário de inscrição do processo seletivo, dentro do período divulgado no edital, com os documentos solicitados.</div>
-    </div>
-    <div class="step-flow-arrow">↓</div>
-    <div class="step-flow-item">
-      <div class="step-flow-num">3</div>
-      <div class="step-flow-title">Estude o conteúdo do edital</div>
-      <div class="step-flow-desc">Leia o edital com atenção e estude as matérias e o conteúdo programático indicados para a prova.</div>
-    </div>
-    <div class="step-flow-arrow">↓</div>
-    <div class="step-flow-item">
-      <div class="step-flow-num">4</div>
-      <div class="step-flow-title">Pratique com videoaulas e exercícios</div>
-      <div class="step-flow-desc">Use videoaulas, listas de exercícios e simulados como boas práticas de estudo para se preparar para a prova.</div>
-    </div>
-    <div class="step-flow-arrow">↓</div>
-    <div class="step-flow-item">
-      <div class="step-flow-num">5</div>
-      <div class="step-flow-title">Faça a prova e acompanhe o resultado</div>
-      <div class="step-flow-desc">Compareça no dia e horário marcados e acompanhe a divulgação do resultado e da chamada para matrícula.</div>
     </div>
   </div>
 </section>
@@ -735,7 +603,7 @@
 <div class="cta-band">
   <h2>Pronta para escrever<br>sua história em TI?</h2>
   <p>O ELAS-&lt;TIC&gt; 2026 é o seu ponto de partida. Inscrições gratuitas, agosto de 2026.</p>
-  <a href="inscricao.html" class="btn btn-white" style="position:relative">Fazer minha inscrição</a>
+  <a href="https://docs.google.com/forms/d/e/1FAIpQLSfg4KvIrDyqPQtukTfYqi7aDrI4TwfdcUrZkWkQHGhs6Rtmtw/viewform?usp=publish-editor" class="btn btn-white" style="position:relative">Fazer minha inscrição</a>
 </div>
  
 <!-- FOOTER -->
